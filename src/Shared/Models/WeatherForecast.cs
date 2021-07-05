@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IR.Shared
+namespace IR.Shared.Models
 {
 	public class WeatherForecast
 	{

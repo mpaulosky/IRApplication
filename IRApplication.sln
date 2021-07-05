@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Server", "IR\Server\IR.Server.csproj", "{D2F6572E-A5FC-4A5C-AE03-99FFCBAD2665}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Server", "src\Server\IR.Server.csproj", "{D2F6572E-A5FC-4A5C-AE03-99FFCBAD2665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Client", "IR\Client\IR.Client.csproj", "{3B0CCE7B-7F52-4676-B5DD-DAC6EE53E0CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Client", "src\Client\IR.Client.csproj", "{3B0CCE7B-7F52-4676-B5DD-DAC6EE53E0CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Shared", "IR\Shared\IR.Shared.csproj", "{B6855538-2D14-47E5-925A-CE78366D6B81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Shared", "src\Shared\IR.Shared.csproj", "{B6855538-2D14-47E5-925A-CE78366D6B81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SRC", "SRC", "{F087F871-ED54-4606-AA35-ED3AFDAF4DEE}"
 EndProject

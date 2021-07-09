@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -23,6 +23,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Server\IR.Server\IR.Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Test Support\" />
   </ItemGroup>
 
 </Project>

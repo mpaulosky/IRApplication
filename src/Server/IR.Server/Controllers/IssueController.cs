@@ -155,10 +155,10 @@ namespace IR.Server.Controllers
 
 				return NoContent();
 			}
-			//catch (IssueNotFoundException)
-			//{
-			//	return NotFound();
-			//}
+			catch (IssueNotFoundException)
+			{
+				return NotFound();
+			}
 			catch (Exception ex)
 			{
 				_logger.LogError("Something went wrong inside UpdateIssueAsync action: {Message}", ex.Message);
@@ -188,10 +188,10 @@ namespace IR.Server.Controllers
 
 				return NoContent();
 			}
-			//catch (IssueNotFoundException)
-			//{
-			//	return NotFound();
-			//}
+			catch (IssueNotFoundException)
+			{
+				return NotFound();
+			}
 			catch (Exception ex)
 			{
 				_logger.LogError("Something went wrong inside DeleteIssueAsync action: {Message}", ex.Message);

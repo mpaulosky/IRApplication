@@ -59,7 +59,7 @@ namespace IR.Shared.Dtos
 
 		[Display(Name = "Date Resolved")] public DateTimeOffset? DateResolvedUtc { get; init; } = null;
 
-		[Display(Name = "Resolved")] public bool IsResolved { get; init; }
+		[Display(Name = "Resolved")] public bool IsResolved { get; init; } = false;
 	};
 
 	public record NewIssueDto

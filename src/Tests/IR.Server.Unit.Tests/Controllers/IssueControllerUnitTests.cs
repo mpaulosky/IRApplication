@@ -1,22 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 using FluentAssertions;
 
 using IR.Server.Controllers;
 using IR.Shared.Dtos;
-using IR.Shared.Interfaces;
-
 using IR.Shared.Infrastructure;
+using IR.Shared.Interfaces;
+using IR.Shared.Models;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using Moq;
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
 using Xunit;
-using IR.Shared.Models;
 
 namespace IR.Server.Unit.Tests.Controllers
 {
@@ -27,7 +28,6 @@ namespace IR.Server.Unit.Tests.Controllers
 		private Mock<IIssueService> IssueServiceMock { get; }
 
 		private Mock<ILogger<IssueController>> LoggerMock { get; }
-
 
 		public IssueControllerUnitTests()
 		{
@@ -195,7 +195,7 @@ namespace IR.Server.Unit.Tests.Controllers
 				var expectedCreatedAtActionName = nameof(IssueController.GetIssueByIdAsync);
 				var issueToCreate = new NewIssueDto { IssueDescription = "Test  1" };
 				var expectedResult = new IssueDto { Id = 1, IssueDescription = "Test  1" };
-				
+
 				IssueServiceMock
 					.Setup(x => x.CreateIssueAsync(issueToCreate))
 					.ReturnsAsync(expectedResult);
@@ -231,34 +231,20 @@ namespace IR.Server.Unit.Tests.Controllers
 				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
 			}
 
-			[Fact()]
-			public async Task CreateIssueAsync_With_Invalid_Id_Should_Return_BadRequestResult_Test()
-			{
-				// Arrange
-
-				var expectedIssue = new NewIssueDto(){ IssueDescription = "Test 1" };
-
-				ControllerUnderTest.ModelState.AddModelError("Id", "Some Error");
-
-				// Act
-
-				var result = await ControllerUnderTest.CreateIssueAsync(expectedIssue);
-
-				// Assert
-
-				var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-				Assert.IsType<SerializableError>(badRequestResult.Value);
-			}
-
-			[Theory()]
-			[InlineData("", "", "", "")]
-			public async Task CreateIssueAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync(string issueDescription, string initiatorId, string initiatorName, string expectedLog)
+			[Theory(DisplayName = "CreateIssueAsync With InValid NewIssueDto")]
+			[InlineData("", "test", "test", "Invalid issue object sent from client", "Description Is Required", "IssueDescription")]
+			[InlineData(null, "test", "test", "Invalid issue object sent from client", "Description Is Required", "IssueDescription")]
+			[InlineData("test", "", "test", "Invalid issue object sent from client", "Initiator Id Is Required", "InitiatorId")]
+			[InlineData("test", null, "test", "Invalid issue object sent from client", "Initiator Id Is Required", "InitiatorId")]
+			[InlineData("test", "test", "", "Invalid issue object sent from client", "Initiator Name Is Required", "InitiatorName")]
+			[InlineData("test", "test", null, "Invalid issue object sent from client", "Initiator Name Is Required", "InitiatorName")]
+			public async Task CreateIssueAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync(string issueDescription, string initiatorId, string initiatorName, string expectedLog, string expectedValidationError, string expectedValidationField)
 			{
 				// Arrange
 
 				var issue = new NewIssueDto() { IssueDescription = issueDescription, InitiatorId = initiatorId, InitiatorName = initiatorName };
 
-				//ControllerUnderTest.ModelState.AddModelError("Id", "Some Error");
+				TestHelpers.MockModelState(issue, ControllerUnderTest);
 
 				// Act
 
@@ -266,12 +252,16 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				// Assert
 
-				result.Should().BeOfType<ObjectResult>();
+				result.Should().BeOfType<BadRequestObjectResult>();
 				LoggerMock.Invocations.Count.Should().Be(1);
 				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
 
-				var content = (ObjectResult)result;
-				content.Value.Should().BeOfType<SerializableError>();
+				var badRequestResult = (BadRequestObjectResult)result;
+				badRequestResult.StatusCode.Should().Be(badRequestResult.StatusCode);
+				var errors = Assert.IsType<SerializableError>(badRequestResult.Value).ToList();
+				errors.Count.Should().Be(1);
+				errors[0].Key.Should().Contain(expectedValidationField);
+				errors[0].Value.As<string[]>()[0].Should().BeEquivalentTo(expectedValidationError);
 			}
 
 			[Fact()]
@@ -282,7 +272,7 @@ namespace IR.Server.Unit.Tests.Controllers
 				var issueToCreate = new NewIssueDto { IssueDescription = "Test  1" };
 				const string expectedLog = "Something went wrong inside CreateIssueAsync action: Some Error";
 				const string expectedValue = "Internal server error";
-				
+
 				IssueServiceMock
 					.Setup(x => x.CreateIssueAsync(It.IsAny<NewIssueDto>()))
 					.ThrowsAsync(new Exception("Some Error"));
@@ -310,7 +300,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			{
 				// Arrange
 
-				IssueForUpdateDto expectedIssue = new() { Id = 1, IssueDescription = "Test 1 update", InitiatorId = "test", InitiatorName = "Tester", DateModifiedUtc = DateTimeOffset.UtcNow, DateResolvedUtc= null, IsResolved = false };
+				IssueForUpdateDto expectedIssue = new() { Id = 1, IssueDescription = "Test 1 update", InitiatorId = "test", InitiatorName = "Tester", DateModifiedUtc = DateTimeOffset.UtcNow, DateResolvedUtc = null, IsResolved = false };
 
 				IssueServiceMock
 					.Setup(x => x.UpdateIssueAsync(expectedIssue.Id, expectedIssue))
@@ -348,7 +338,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			{
 				// Arrange
 
-				IssueForUpdateDto unExpectedIssue = new() { Id = 1, IssueDescription = "Test 1 update", InitiatorId = "test", InitiatorName = "Tester", DateModifiedUtc = DateTimeOffset.UtcNow, DateResolvedUtc= null, IsResolved = false };
+				IssueForUpdateDto unExpectedIssue = new() { Id = 1, IssueDescription = "Test 1 update", InitiatorId = "test", InitiatorName = "Tester", DateModifiedUtc = DateTimeOffset.UtcNow, DateResolvedUtc = null, IsResolved = false };
 
 				var expectedResult = new Issue { Id = 1, IssueDescription = "Test 1", DateAddedUtc = DateTimeOffset.Now };
 
@@ -365,14 +355,20 @@ namespace IR.Server.Unit.Tests.Controllers
 				Assert.IsType<NotFoundResult>(result);
 			}
 
-			[Fact]
-			public async Task UpdateIssueAsync_Should_return_BadRequestResult()
+			[Theory(DisplayName = "UpdateIssueAsync With InValid NewIssueDto")]
+			[InlineData("", "test", "test", "Invalid issue object sent from client", "Description Is Required", "IssueDescription")]
+			[InlineData(null, "test", "test", "Invalid issue object sent from client", "Description Is Required", "IssueDescription")]
+			[InlineData("test", "", "test", "Invalid issue object sent from client", "Initiator Id Is Required", "InitiatorId")]
+			[InlineData("test", null, "test", "Invalid issue object sent from client", "Initiator Id Is Required", "InitiatorId")]
+			[InlineData("test", "test", "", "Invalid issue object sent from client", "Initiator Name Is Required", "InitiatorName")]
+			[InlineData("test", "test", null, "Invalid issue object sent from client", "Initiator Name Is Required", "InitiatorName")]
+			public async Task CreateIssueAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync(string issueDescription, string initiatorId, string initiatorName, string expectedLog, string expectedValidationError, string expectedValidationField)
 			{
 				// Arrange
 
-				var issue = new IssueForUpdateDto() { Id = 1, IssueDescription = "Test 1 update", InitiatorId = "test", InitiatorName = "Tester", DateModifiedUtc = DateTimeOffset.UtcNow, DateResolvedUtc = null, IsResolved = false };
+				var issue = new IssueForUpdateDto() { Id = 1, IssueDescription = issueDescription, InitiatorId = initiatorId, InitiatorName = initiatorName, DateModifiedUtc = DateTimeOffset.UtcNow };
 
-				ControllerUnderTest.ModelState.AddModelError("Id", "Some error");
+				TestHelpers.MockModelState(issue, ControllerUnderTest);
 
 				// Act
 
@@ -380,8 +376,44 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				// Assert
 
-				var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-				Assert.IsType<SerializableError>(badRequestResult.Value);
+				result.Should().BeOfType<BadRequestObjectResult>();
+				LoggerMock.Invocations.Count.Should().Be(1);
+				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
+
+				var badRequestResult = (BadRequestObjectResult)result;
+				badRequestResult.StatusCode.Should().Be(badRequestResult.StatusCode);
+				var errors = Assert.IsType<SerializableError>(badRequestResult.Value).ToList();
+				errors.Count.Should().Be(1);
+				errors[0].Key.Should().Contain(expectedValidationField);
+				errors[0].Value.As<string[]>()[0].Should().BeEquivalentTo(expectedValidationError);
+			}
+
+			[Fact()]
+			public async Task CreateIssueAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
+			{
+				// Arrange
+
+				var issueToCreate = new NewIssueDto { IssueDescription = "Test  1" };
+				const string expectedLog = "Something went wrong inside CreateIssueAsync action: Some Error";
+				const string expectedValue = "Internal server error";
+
+				IssueServiceMock
+					.Setup(x => x.CreateIssueAsync(It.IsAny<NewIssueDto>()))
+					.ThrowsAsync(new Exception("Some Error"));
+
+				// Act
+
+				var result = await ControllerUnderTest.CreateIssueAsync(issueToCreate);
+
+				// Assert
+
+				result.Should().BeOfType<ObjectResult>();
+				LoggerMock.Invocations.Count.Should().Be(1);
+				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
+
+				var content = (ObjectResult)result;
+				content.StatusCode.Should().Be(500);
+				content.Value.Should().Be(expectedValue);
 			}
 
 			[Fact()]
@@ -461,7 +493,7 @@ namespace IR.Server.Unit.Tests.Controllers
 				var expectedIssue = new IssueForDeleteDto(1, true);
 
 				var expectedResult = new Issue { Id = 1, IssueDescription = "Test 1", DateAddedUtc = DateTimeOffset.Now };
-				
+
 				IssueServiceMock
 					.Setup(x => x.DeleteIssueAsync(expectedIssue))
 					.ThrowsAsync(new IssueNotFoundException(expectedResult));
@@ -483,9 +515,9 @@ namespace IR.Server.Unit.Tests.Controllers
 				var expectedIssue = new IssueForDeleteDto(1, true);
 
 				const string expectedLog = "Something went wrong inside DeleteIssueAsync action: Some Error";
-				
+
 				const string expectedValue = "Internal server error";
-				
+
 				IssueServiceMock
 					.Setup(x => x.DeleteIssueAsync(It.IsAny<IssueForDeleteDto>()))
 					.ThrowsAsync(new Exception("Some Error"));
@@ -506,4 +538,20 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 	}
+
+	public class TestHelpers
+	{
+		public static void MockModelState<TModel, TController>(TModel model, TController controller) where TController : ControllerBase
+		{
+			var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(model, null, null);
+			var validationResults = new List<ValidationResult>();
+			Validator.TryValidateObject(model, validationContext, validationResults, true);
+			foreach (var validationResult in validationResults)
+			{
+				controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
+			}
+		}
+
+	}
+
 }

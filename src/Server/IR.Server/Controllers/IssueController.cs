@@ -69,7 +69,7 @@ namespace IR.Server.Controllers
 		[HttpGet("/issues/{id}", Name = nameof(GetIssueByIdAsync))]
 		[ProducesResponseType(typeof(IssueDto), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public async Task<IActionResult> GetIssueByIdAsync([Required] int id)
+		public async Task<IActionResult> GetIssueByIdAsync([Required] long id)
 		{
 			try
 			{
@@ -135,7 +135,7 @@ namespace IR.Server.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public async Task<IActionResult> UpdateIssueAsync([FromRoute] int id, [FromBody] IssueForUpdateDto issue)
+		public async Task<IActionResult> UpdateIssueAsync([FromRoute] long id, [FromBody] IssueForUpdateDto issue)
 		{
 			try
 			{

@@ -8,7 +8,7 @@ namespace IR.Shared.Interfaces
 	public interface IIssueRepository
 	{
 		Task<IEnumerable<Issue>> GetIssuesAsync();
-		Task<Issue> GetIssueByIdAsync(int id);
+		Task<Issue> GetIssueByIdAsync(long id);
 		void CreateIssue(Issue issue);
 		void UpdateIssue(Issue issue);
 		void DeleteIssue(Issue issue);

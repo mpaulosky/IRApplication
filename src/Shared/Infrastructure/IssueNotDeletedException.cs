@@ -12,7 +12,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 
-		private IssueNotDeletedException(int id)
+		private IssueNotDeletedException(long id)
 			: base($"Issue {id} was not deleted. ")
 		{
 		}

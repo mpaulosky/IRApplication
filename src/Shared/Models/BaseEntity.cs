@@ -8,7 +8,7 @@ namespace IR.Shared.Models
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		[Display(Name = "Date Added")] public DateTimeOffset DateAddedUtc { get; set; } = DateTimeOffset.UtcNow;
 

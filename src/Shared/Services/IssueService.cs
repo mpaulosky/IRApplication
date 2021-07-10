@@ -1,16 +1,16 @@
-﻿using System;
+﻿using AutoMapper;
+
+using IR.Shared.Dtos;
+using IR.Shared.Infrastructure;
+using IR.Shared.Interfaces;
+using IR.Shared.Models;
+
+using Microsoft.Extensions.Logging;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using AutoMapper;
-
-using IR.Shared.Interfaces;
-using IR.Shared.Dtos;
-
-using Microsoft.Extensions.Logging;
-using IR.Shared.Models;
-using IR.Shared.Infrastructure;
 
 namespace IR.Shared.Services
 {
@@ -19,19 +19,19 @@ namespace IR.Shared.Services
 	/// </summary>
 	public class IssueService : IIssueService
 	{
-		private readonly IRepositoryWrapper _repositoryWrapper;
+		private readonly IRepository _repository;
 		private readonly IMapper _mapper;
 		private readonly ILogger<IssueService> _logger;
 
 		/// <summary>
 		/// Issue Service Constructor
 		/// </summary>
-		/// <param name="repositoryWrapper"></param>
+		/// <param name="repository"></param>
 		/// <param name="mapper"></param>
 		/// <param name="logger"></param>
-		public IssueService(IRepositoryWrapper repositoryWrapper, IMapper mapper, ILogger<IssueService> logger)
+		public IssueService(IRepository repository, IMapper mapper, ILogger<IssueService> logger)
 		{
-			_repositoryWrapper = repositoryWrapper ?? throw new ArgumentNullException(nameof(repositoryWrapper));
+			_repository = repository ?? throw new ArgumentNullException(nameof(repository));
 			_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 			_logger = logger;
 		}
@@ -42,8 +42,8 @@ namespace IR.Shared.Services
 		/// <returns>A Task of IEnumerable IssueDto's</returns>
 		public async Task<IEnumerable<IssueDto>> GetIssuesAsync()
 		{
-			var result = await _repositoryWrapper.Issue.GetIssuesAsync();
-			var items = _mapper.Map<List<IssueDto>>(result).AsEnumerable();
+			var results = await _repository.SelectAllAsync<Issue>();
+			var items = _mapper.Map<List<IssueDto>>(results).AsEnumerable();
 			return items;
 		}
 
@@ -52,10 +52,10 @@ namespace IR.Shared.Services
 		/// </summary>
 		/// <param name="id">int Issue Id</param>
 		/// <returns>A single IssueDto</returns>
-		public async Task<IssueDto> GetIssueByIdAsync(int id)
+		public async Task<IssueDto> GetIssueByIdAsync(long id)
 		{
 			await EnforceIssueExistenceAsync(id);
-			var issue = await _repositoryWrapper.Issue.GetIssueByIdAsync(id);
+			var issue = await _repository.SelectByIdAsync<Issue>(id);
 			return _mapper.Map<IssueDto>(issue);
 		}
 
@@ -66,19 +66,17 @@ namespace IR.Shared.Services
 		/// <returns>A Task of IssueDto</returns>
 		public async Task<IssueDto> CreateIssueAsync(NewIssueDto issue)
 		{
-			var issueEntity = _mapper.Map<Issue>(issue);
-
-			_repositoryWrapper.Issue.CreateIssue(issueEntity);
-
 			try
 			{
-				await _repositoryWrapper.SaveAsync();
+				var issueEntity = _mapper.Map<Issue>(issue);
+
+				await _repository.CreateAsync(issueEntity);
 
 				return _mapper.Map<Issue, IssueDto>(issueEntity);
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Creating new Issue: {Id} Failed!", issue);
+				_logger.LogError(ex, "Creating new Issue Failed!");
 				throw new IssueNotCreatedException(_mapper.Map<Issue>(issue));
 			}
 		}
@@ -86,20 +84,19 @@ namespace IR.Shared.Services
 		/// <summary>
 		/// Updates an Issue
 		/// </summary>
-		/// <param name="id">int Issue Id</param>
+		/// <param name="id">long Issue Id</param>
 		/// <param name="issue">An IssueForUpdateDto</param>
 		/// <returns>A Task of Boolean</returns>
-		public async Task<bool> UpdateIssueAsync(int id, IssueForUpdateDto issue)
+		public async Task<bool> UpdateIssueAsync(long id, IssueForUpdateDto issue)
 		{
 			var issueEntity = await EnforceIssueExistenceAsync(id);
 
-			_mapper.Map(issue, issueEntity);
-
-			_repositoryWrapper.Issue.UpdateIssue(issueEntity);
-
 			try
 			{
-				await _repositoryWrapper.SaveAsync();
+				_mapper.Map(issue, issueEntity);
+
+				await _repository.UpdateAsync(issueEntity);
+
 				return true;
 			}
 			catch (Exception ex)
@@ -117,14 +114,14 @@ namespace IR.Shared.Services
 		public async Task<bool> DeleteIssueAsync(IssueForDeleteDto issue)
 		{
 			var issueEntity = await EnforceIssueExistenceAsync(issue.Id);
-			issueEntity.IsDeleted = true;
-			issueEntity.DateModifiedUtc = DateTimeOffset.Now;
-			;
-			_repositoryWrapper.Issue.DeleteIssue(issueEntity);
 
 			try
 			{
-				await _repositoryWrapper.SaveAsync();
+				issueEntity.IsDeleted = true;
+				issueEntity.DateModifiedUtc = DateTimeOffset.Now;
+
+				await _repository.UpdateAsync(issueEntity);
+
 				return true;
 			}
 			catch (Exception ex)
@@ -139,9 +136,9 @@ namespace IR.Shared.Services
 		/// </summary>
 		/// <param name="id">An Issue Id</param>
 		/// <returns>A Task of Boolean</returns>
-		public async Task<bool> IssueExistsAsync(int id)
+		public async Task<bool> IssueExistsAsync(long id)
 		{
-			var issue = await _repositoryWrapper.Issue.GetIssueByIdAsync(id);
+			var issue = await _repository.SelectByIdAsync<Issue>(id);
 			return issue != null;
 		}
 
@@ -151,12 +148,13 @@ namespace IR.Shared.Services
 		/// <param name="id">An Issue Id</param>
 		/// <returns>A Task of Issue</returns>
 		/// <exception cref="IssueNotFoundException">If the Issue does not exist throws a IssueNotFoundException</exception>
-		public async Task<Issue> EnforceIssueExistenceAsync(int id)
+		public async Task<Issue> EnforceIssueExistenceAsync(long id)
 		{
-			var issue = await _repositoryWrapper.Issue.GetIssueByIdAsync(id);
+			var issue = await _repository.SelectByIdAsync<Issue>(id);
+
 			if (issue == null)
 			{
-				_logger.LogError("Issue with id: {Id}, hasn't been found in", id);
+				_logger.LogError("Issue with id: {Id}, hasn't been found in data", id);
 				throw new IssueNotFoundException(new Issue { Id = id });
 			}
 

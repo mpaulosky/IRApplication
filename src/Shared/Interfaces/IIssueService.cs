@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using IR.Shared.Dtos;
@@ -12,11 +9,11 @@ namespace IR.Shared.Interfaces
 	public interface IIssueService
 	{
 		Task<IEnumerable<IssueDto>> GetIssuesAsync();
-		Task<IssueDto> GetIssueByIdAsync(int id);
+		Task<IssueDto> GetIssueByIdAsync(long id);
 		Task<IssueDto> CreateIssueAsync(NewIssueDto issue);
-		Task<bool> UpdateIssueAsync(int id, IssueForUpdateDto issue);
+		Task<bool> UpdateIssueAsync(long id, IssueForUpdateDto issue);
 		Task<bool> DeleteIssueAsync(IssueForDeleteDto issue);
-		Task<bool> IssueExistsAsync(int id);
-		Task<Issue> EnforceIssueExistenceAsync(int id);
+		Task<bool> IssueExistsAsync(long id);
+		Task<Issue> EnforceIssueExistenceAsync(long id);
 	}
 }

@@ -161,12 +161,12 @@ namespace IR.Server.Unit.Tests.Controllers
 			{
 				// Arrange
 
-				const int testId = 1;
+				const long testId = 1;
 				const string expectedLog = "Something went wrong inside IssueByIdAsync action: Some Error";
 				const string expectedValue = "Internal server error";
 
 				IssueServiceMock
-					.Setup(x => x.GetIssueByIdAsync(It.IsAny<int>()))
+					.Setup(x => x.GetIssueByIdAsync(testId))
 					.ThrowsAsync(new Exception("Some Error"));
 
 				// Act
@@ -426,7 +426,7 @@ namespace IR.Server.Unit.Tests.Controllers
 				const string expectedValue = "Internal server error";
 
 				IssueServiceMock
-					.Setup(x => x.UpdateIssueAsync(It.IsAny<int>(), It.IsAny<IssueForUpdateDto>()))
+					.Setup(x => x.UpdateIssueAsync(It.IsAny<long>(), It.IsAny<IssueForUpdateDto>()))
 					.ThrowsAsync(new Exception("Some Error"));
 
 				// Act
@@ -543,7 +543,7 @@ namespace IR.Server.Unit.Tests.Controllers
 	{
 		public static void MockModelState<TModel, TController>(TModel model, TController controller) where TController : ControllerBase
 		{
-			var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(model, null, null);
+			var validationContext = new ValidationContext(model, null, null);
 			var validationResults = new List<ValidationResult>();
 			Validator.TryValidateObject(model, validationContext, validationResults, true);
 			foreach (var validationResult in validationResults)

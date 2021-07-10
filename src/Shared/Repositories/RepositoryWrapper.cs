@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-using IR.Shared.Data;
+﻿using IR.Shared.Data;
 using IR.Shared.Interfaces;
 
 namespace IR.Shared.Repositories
@@ -8,29 +6,23 @@ namespace IR.Shared.Repositories
 	public class RepositoryWrapper : IRepositoryWrapper
 	{
 		private readonly DataContext _context;
-		private IIssueRepository _issue;
+		private IRepository _repository;
 
 		public RepositoryWrapper(DataContext context)
 		{
 			_context = context;
 		}
 
-		public IIssueRepository Issue
+		public IRepository Repo
 		{
 			get
 			{
-				if (_issue == null)
+				if (_repository == null)
 				{
-					_issue = new IssueRepository(_context);
+					_repository = new Repository<DataContext>(_context);
 				}
-
-				return _issue;
+				return _repository;
 			}
-		}
-
-		public async Task SaveAsync()
-		{
-			await _context.SaveChangesAsync();
 		}
 	}
 }

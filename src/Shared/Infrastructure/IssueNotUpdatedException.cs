@@ -12,7 +12,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 
-		public IssueNotUpdatedException(int id)
+		public IssueNotUpdatedException(long id)
 			: base($"Issue {id} was not updated. ")
 		{
 		}

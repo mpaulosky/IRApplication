@@ -1,6 +1,4 @@
-﻿using IR.Shared.Infrastructure.ErrorHandler;
-
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
 namespace IR.Shared.Infrastructure.ErrorHandler

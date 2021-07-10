@@ -6,9 +6,9 @@ namespace IR.Shared.Dtos
 	/// <summary>
 	/// Issue Dto
 	/// </summary>
-	public record IssueDto()
+	public record IssueDto
 	{
-		public int Id { get; init; }
+		public long Id { get; init; }
 
 		[Display(Name = "Description")] [DataType(DataType.Text)] public string IssueDescription { get; init; }
 
@@ -28,14 +28,14 @@ namespace IR.Shared.Dtos
 	/// <summary>
 	/// Issue For Deletes Dto
 	/// </summary>
-	public record IssueForDeleteDto(int Id, bool IsDeleted);
+	public record IssueForDeleteDto(long Id, bool IsDeleted);
 
 	/// <summary>
 	/// Issue For Updates Dto
 	/// </summary>
-	public record IssueForUpdateDto()
+	public record IssueForUpdateDto
 	{
-		public int Id { get; init; }
+		public long Id { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
 		[Display(Name = "Description")]

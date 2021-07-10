@@ -25,7 +25,7 @@ namespace IR.Shared.Repositories
 			return result;
 		}
 
-		public async Task<Issue> GetIssueByIdAsync(int id)
+		public async Task<Issue> GetIssueByIdAsync(long id)
 		{
 			var result = await _context.FindAsync<Issue>(id);
 			return result;

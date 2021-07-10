@@ -12,7 +12,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 
-		private IssueNotFoundException(int id)
+		private IssueNotFoundException(long id)
 			: base($"Issue {id} was not found. ")
 		{
 		}

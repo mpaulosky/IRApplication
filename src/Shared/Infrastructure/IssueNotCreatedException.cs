@@ -12,7 +12,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 
-		private IssueNotCreatedException(int id)
+		private IssueNotCreatedException(long id)
 			: base($"Issue {id} already exist. ")
 		{
 		}

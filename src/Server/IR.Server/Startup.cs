@@ -1,5 +1,6 @@
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 
@@ -21,6 +22,7 @@ using Microsoft.OpenApi.Models;
 
 namespace IR.Server
 {
+	[ExcludeFromCodeCoverage]
 	public class Startup
 	{
 		public Startup(IConfiguration configuration)
@@ -72,7 +74,7 @@ namespace IR.Server
 			services.AddSingleton(mapper);
 
 			services.AddScoped<IRepository, Repository<DataContext>>();
-			services.AddSingleton<IIssueService, IssueService>();
+			services.AddScoped<IIssueService, IssueService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

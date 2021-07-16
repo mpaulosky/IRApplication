@@ -5,7 +5,7 @@ using IR.Shared.Models;
 namespace IR.Shared.Infrastructure
 {
 	[Serializable]
-	public class IssueNotDeletedException : IrcerApiException
+	public class IssueNotDeletedException : IRServerException
 	{
 		public IssueNotDeletedException(BaseEntity issue)
 			: this(issue.Id)

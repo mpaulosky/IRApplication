@@ -5,7 +5,7 @@ using IR.Shared.Models;
 namespace IR.Shared.Infrastructure
 {
 	[Serializable]
-	public class IssueNotCreatedException : IrcerApiException
+	public class IssueNotCreatedException : IRServerException
 	{
 		public IssueNotCreatedException(BaseEntity issue)
 			: this(issue.Id)

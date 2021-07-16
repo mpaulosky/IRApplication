@@ -5,7 +5,7 @@ using System;
 namespace IR.Shared.Infrastructure
 {
 	[Serializable]
-	public class IssueNotUpdatedException : IrcerApiException
+	public class IssueNotUpdatedException : IRServerException
 	{
 		public IssueNotUpdatedException(Issue issue)
 			: this(issue.Id)

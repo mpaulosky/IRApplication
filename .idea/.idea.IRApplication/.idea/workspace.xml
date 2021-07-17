@@ -6,24 +6,9 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Renamed Class IRCERApiException.cs to IRServerException.cs">
-      <change afterPath="$PROJECT_DIR$/src/Server/IR.Server/Controllers/CommentController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Dtos/CommentDtos.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Interfaces/ICommentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/CommentServiceUnitTests.cs" afterDir="false" />
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/IR.Server/IR.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/IR.Server/IR.Server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Dtos/Dtos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Dtos/IssueDtos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotCreatedException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotDeletedException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotFoundException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotUpdatedException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Models/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-1" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,12 +32,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1625958530" />
+                    <option name="branchName" value="feature-5-addResolution" />
+                    <option name="lastUsedInstant" value="1626488910" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="feature-1" />
-                    <option name="lastUsedInstant" value="1625958529" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1626488359" />
                   </RecentBranch>
                 </list>
               </option>
@@ -89,7 +74,6 @@
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Program.cs" />
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Startup.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRCERApiException.cs" />
-      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Interfaces/ICommentService.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentDto.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentForDeleteDto.cs" />
@@ -108,6 +92,7 @@
       <option value="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/CommentServiceUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v3g0DXd1WanngnxCOJKvNiV2dk" />
@@ -269,25 +254,25 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />

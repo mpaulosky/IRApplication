@@ -75,6 +75,7 @@ namespace IR.Server
 
 			services.AddScoped<IRepository, Repository<DataContext>>();
 			services.AddScoped<IIssueService, IssueService>();
+			services.AddScoped<ICommentService,CommentService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

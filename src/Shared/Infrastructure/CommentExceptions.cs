@@ -1,4 +1,5 @@
 ﻿using System;
+
 using IR.Shared.Models;
 
 namespace IR.Shared.Infrastructure

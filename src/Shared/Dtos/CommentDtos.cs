@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IR.Shared.Dtos
 {
+	/// <summary>
+	/// Comment Dto
+	/// </summary>
 	public record CommentDto
 	{
 		public long Id { get; init; }
@@ -28,8 +31,16 @@ namespace IR.Shared.Dtos
 		public long ResponseId { get; init; }
 	}
 
+	/// <summary>
+	/// Comment For Delete Dto
+	/// </summary>
+	/// <param name="Id"></param>
+	/// <param name="IsDeleted"></param>
 	public record CommentForDeleteDto(long Id, [Display(Name = "Is Deleted")] bool IsDeleted);
 
+	/// <summary>
+	///	Comment For Update Dto
+	/// </summary>
 	public record CommentForUpdateDto
 	{
 		public long Id { get; init; }
@@ -58,6 +69,9 @@ namespace IR.Shared.Dtos
 		[Display(Name = "Is Deleted")] public bool IsDeleted { get; init; }
 	}
 
+	/// <summary>
+	/// New Comment Dto
+	/// </summary>
 	public record NewCommentDto
 	{
 		[Required(ErrorMessage = "{0} Is Required")]

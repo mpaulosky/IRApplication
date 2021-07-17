@@ -29,7 +29,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 			CommentServiceMock = new Mock<ICommentService>();
 
-			ControllerUnderTest = new CommentController(CommentServiceMock.Object, LoggerMock.Object);
+			ControllerUnderTest = new(CommentServiceMock.Object, LoggerMock.Object);
 		}
 
 		public class GetCommentsAsync : CommentControllerUnitTests

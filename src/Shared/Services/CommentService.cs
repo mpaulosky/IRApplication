@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using AutoMapper;
+
 using IR.Shared.Dtos;
 using IR.Shared.Infrastructure;
 using IR.Shared.Interfaces;
 using IR.Shared.Models;
+
 using Microsoft.Extensions.Logging;
 
 namespace IR.Shared.Services
 {
 	public class CommentService : ICommentService
 	{
-				private readonly IRepository _repository;
+		private readonly IRepository _repository;
 		private readonly IMapper _mapper;
 		private readonly ILogger<CommentService> _logger;
 

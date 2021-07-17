@@ -47,4 +47,12 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --configuration Release --no-restore --logger trx --collect:"XPlat Code Coverage" --results-directory "TestResults-${{ matrix.os }}"
+    - name: Upload dotnet test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: dotnet-results-${{ matrix.os }}
+        path: TestResults-${{ matrix.os }}
+
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}

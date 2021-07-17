@@ -34,6 +34,15 @@ namespace IR.Shared.Mapping
 			CreateMap<CommentForDeleteDto, Comment>();
 			CreateMap<List<Comment>, List<CommentDto>>();
 			CreateMap<List<CommentDto>, List<Comment>>();
+
+			// Response
+			CreateMap<Response, ResponseDto>();
+			CreateMap<ResponseDto, Response>();
+			CreateMap<NewResponseDto, Response>();
+			CreateMap<ResponseForUpdateDto, Response>();
+			CreateMap<ResponseForDeleteDto, Response>();
+			CreateMap<List<Response>, List<ResponseDto>>();
+			CreateMap<List<ResponseDto>, List<Response>>();
 		}
 	}
 }

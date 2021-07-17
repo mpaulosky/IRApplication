@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 namespace IR.Server.Controllers
 {
 	/// <summary>
-	/// Issue Controller
+	/// Comment Controller
 	/// </summary>
 	[Route("[controller]")]
 	[ApiController]

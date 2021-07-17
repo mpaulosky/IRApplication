@@ -43,7 +43,7 @@ namespace IR.Shared.Services
 		public async Task<IEnumerable<IssueDto>> GetIssuesAsync()
 		{
 			var results = await _repository.SelectAllAsync<Issue>();
-			var items = _mapper.Map<List<IssueDto>>(results).AsEnumerable();
+			var items = _mapper.Map<IEnumerable<IssueDto>>(results);
 			return items;
 		}
 

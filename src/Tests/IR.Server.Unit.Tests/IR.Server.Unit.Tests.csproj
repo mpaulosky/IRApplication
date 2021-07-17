@@ -22,11 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Server\IR.Server\IR.Server.csproj" />
+    <Folder Include="Test Support\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Test Support\" />
+    <ProjectReference Include="..\..\Server\IR.Server.csproj" />
+    <ProjectReference Include="..\..\Shared\IR.Shared.csproj" />
   </ItemGroup>
 
 </Project>

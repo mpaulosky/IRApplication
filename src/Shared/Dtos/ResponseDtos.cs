@@ -4,23 +4,23 @@ using System.ComponentModel.DataAnnotations;
 namespace IR.Shared.Dtos
 {
 	/// <summary>
-	/// Comment Dto
+	/// Response Dto
 	/// </summary>
-	public record CommentDto
+	public record ResponseDto
 	{
 		public long Id { get; init; }
 
-		[Display(Name = "Comment")]
+		[Display(Name = "Response")]
 		[DataType(DataType.Text)]
-		public string CommentDescription { get; init; }
+		public string ResponseDescription { get; init; }
 
-		[Display(Name = "Commenter Id")]
+		[Display(Name = "Responder Id")]
 		[DataType(DataType.Text)]
-		public string CommenterId { get; init; }
+		public string ResponderId { get; init; }
 
-		[Display(Name = "Commenter Name")]
+		[Display(Name = "Responder Name")]
 		[DataType(DataType.Text)]
-		public string CommenterName { get; init; }
+		public string ResponderName { get; init; }
 
 		[Display(Name = "Date Added")] public DateTimeOffset DateAddedUtc { get; init; }
 
@@ -28,41 +28,43 @@ namespace IR.Shared.Dtos
 
 		[Display(Name = "Is Deleted")] public bool IsDeleted { get; init; }
 
-		public long ResponseId { get; init; }
+		[Required(ErrorMessage = "{0} Is Required")]
+		[Display(Name = "Issue Id")]
+		public long IssueId { get; init; }
 	}
 
 	/// <summary>
-	/// Comment For Delete Dto
+	/// Response For Delete Dto
 	/// </summary>
 	/// <param name="Id"></param>
 	/// <param name="IsDeleted"></param>
-	public record CommentForDeleteDto(long Id, [Display(Name = "Is Deleted")] bool IsDeleted);
+	public record ResponseForDeleteDto(long Id, [Display(Name = "Is Deleted")] bool IsDeleted);
 
 	/// <summary>
-	///	Comment For Update Dto
+	///	Response For Update Dto
 	/// </summary>
-	public record CommentForUpdateDto
+	public record ResponseForUpdateDto
 	{
 		public long Id { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Comment")]
+		[Display(Name = "Response")]
 		[DataType(DataType.Text)]
 		[StringLength(1000, MinimumLength = 3,
 			ErrorMessage = "{0} Requires a minimum of {2} and a maximum of {1} characters")]
-		public string CommentDescription { get; init; }
+		public string ResponseDescription { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Commenter Id")]
+		[Display(Name = "Responder Id")]
 		[DataType(DataType.Text)]
 		[StringLength(100, ErrorMessage = "{0} Has a maximum of {1} characters")]
-		public string CommenterId { get; init; }
+		public string ResponderId { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Commenter Name")]
+		[Display(Name = "Responder Name")]
 		[DataType(DataType.Text)]
 		[StringLength(100, ErrorMessage = "{0} Has a maximum of {1} characters")]
-		public string CommenterName { get; init; }
+		public string ResponderName { get; init; }
 
 		[Display(Name = "Date Modified")] public DateTimeOffset DateModifiedUtc { get; init; }
 
@@ -70,35 +72,37 @@ namespace IR.Shared.Dtos
 	}
 
 	/// <summary>
-	/// New Comment Dto
+	/// New Response Dto
 	/// </summary>
-	public record NewCommentDto
+	public record NewResponseDto
 	{
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Comment")]
+		[Display(Name = "Response")]
 		[DataType(DataType.Text)]
 		[StringLength(1000, MinimumLength = 3,
 			ErrorMessage = "{0} Requires a minimum of {2} and a maximum of {1} characters")]
-		public string CommentDescription { get; init; }
+		public string ResponseDescription { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Commenter Id")]
+		[Display(Name = "Responder Id")]
 		[DataType(DataType.Text)]
 		[StringLength(100, ErrorMessage = "{0} Has a maximum of {1} characters")]
-		public string CommenterId { get; init; }
+		public string ResponderId { get; init; }
 
 		[Required(ErrorMessage = "{0} Is Required")]
-		[Display(Name = "Commenter Name")]
+		[Display(Name = "Responder Name")]
 		[DataType(DataType.Text)]
 		[StringLength(100, ErrorMessage = "{0} Has a maximum of {1} characters")]
-		public string CommenterName { get; init; }
+		public string ResponderName { get; init; }
+
+		[Required(ErrorMessage = "{0} Is Required")] 
+		[Display(Name = "Issue Id")] 
+		public long IssueId { get; init; }
 
 		[Display(Name = "Date Added")] public DateTimeOffset DateAddedUtc { get; init; } = DateTimeOffset.UtcNow;
 
 		[Display(Name = "Date Modified")] public DateTimeOffset DateModifiedUtc { get; init; } = DateTimeOffset.UtcNow;
 
 		[Display(Name = "Is Deleted")] public bool IsDeleted { get; init; }
-
-		public long ResponseId { get; init; }
 	}
 }

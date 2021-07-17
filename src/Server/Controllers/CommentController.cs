@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading.Tasks;
+
 using IR.Shared.Dtos;
 using IR.Shared.Infrastructure;
 using IR.Shared.Interfaces;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,7 +15,7 @@ using Microsoft.Extensions.Logging;
 namespace IR.Server.Controllers
 {
 	/// <summary>
-	/// Issue Controller
+	/// Comment Controller
 	/// </summary>
 	[Route("[controller]")]
 	[ApiController]

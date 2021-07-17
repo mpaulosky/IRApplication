@@ -1,4 +1,5 @@
 ﻿using System;
+
 using IR.Shared.Models;
 
 namespace IR.Shared.Infrastructure
@@ -16,7 +17,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 	}
-	
+
 	[Serializable]
 	public class IssueNotDeletedException : IRServerException
 	{
@@ -30,7 +31,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 	}
-	
+
 	[Serializable]
 	public class IssueNotFoundException : IRServerException
 	{
@@ -44,7 +45,7 @@ namespace IR.Shared.Infrastructure
 		{
 		}
 	}
-	
+
 	[Serializable]
 	public class IssueNotUpdatedException : IRServerException
 	{

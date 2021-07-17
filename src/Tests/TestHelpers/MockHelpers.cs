@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using IR.Shared.Data;
 using IR.Shared.Models;
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
@@ -16,6 +19,12 @@ namespace TestHelpers
 	[ExcludeFromCodeCoverage]
 	public static class MockHelpers
 	{
+		/// <summary>
+		/// Create DbSet Mock
+		/// </summary>
+		/// <typeparam name="T">The Enitity</typeparam>
+		/// <param name="elements"></param>
+		/// <returns>Mock<DbSet<T>></returns>
 		public static Mock<DbSet<T>> CreateDbSetMock<T>(IEnumerable<T> elements) where T : class
 		{
 			var elementsAsQueryable = elements.AsQueryable();
@@ -47,7 +56,11 @@ namespace TestHelpers
 			return issues;
 		}
 
-
+		/// <summary>
+		/// Create Mocked DataContext
+		/// </summary>
+		/// <param name="options">DbContextOptions</param>
+		/// <returns>Task<DataContext></returns>
 		public static async Task<DataContext> CreateMockedDataContext(DbContextOptions<DataContext> options)
 		{
 			try
@@ -81,6 +94,11 @@ namespace TestHelpers
 			}
 		}
 
+		/// <summary>
+		/// Seed Data
+		/// </summary>
+		/// <param name="options"></param>
+		/// <returns>Task</returns>
 		public static async Task SeedData(DbContextOptions<DataContext> options)
 		{
 			using var context = new DataContext(options);
@@ -90,6 +108,11 @@ namespace TestHelpers
 			await context.SaveChangesAsync();
 		}
 
+		/// <summary>
+		/// Set DbContext Options
+		/// </summary>
+		/// <param name="dbName"></param>
+		/// <returns>DbContextOptions</returns>
 		public static DbContextOptions<DataContext> SetDbContextOptions(string dbName)
 		{
 			// Create In Memory Database
@@ -97,6 +120,24 @@ namespace TestHelpers
 				.UseInMemoryDatabase(databaseName: dbName)
 				.Options;
 			return options;
+		}
+
+		/// <summary>
+		/// Mock Model State
+		/// </summary>
+		/// <typeparam name="TModel">The entity model</typeparam>
+		/// <typeparam name="TController">The Controller</typeparam>
+		/// <param name="model">An Entity Model</param>
+		/// <param name="controller">A Controller</param>
+		public static void MockModelState<TModel, TController>(TModel model, TController controller) where TController : ControllerBase
+		{
+			var validationContext = new ValidationContext(model, null, null);
+			var validationResults = new List<ValidationResult>();
+			Validator.TryValidateObject(model, validationContext, validationResults, true);
+			foreach (var validationResult in validationResults)
+			{
+				controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
+			}
 		}
 	}
 }

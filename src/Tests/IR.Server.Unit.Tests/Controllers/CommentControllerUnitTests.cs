@@ -11,6 +11,9 @@ using IR.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
+
+using TestHelpers;
+
 using Xunit;
 
 namespace IR.Server.Unit.Tests.Controllers
@@ -238,7 +241,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var comment = new NewCommentDto() { CommentDescription = commentText, CommenterId = initiatorId, CommenterName = initiatorName };
 
-				TestHelpers.MockModelState(comment, ControllerUnderTest);
+				MockHelpers.MockModelState(comment, ControllerUnderTest);
 
 				// Act
 
@@ -362,7 +365,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var comment = new CommentForUpdateDto() { Id = 1, CommentDescription = commentText, CommenterId = commenterId, CommenterName = commenterName, DateModifiedUtc = DateTimeOffset.UtcNow };
 
-				TestHelpers.MockModelState(comment, ControllerUnderTest);
+				MockHelpers.MockModelState(comment, ControllerUnderTest);
 
 				// Act
 

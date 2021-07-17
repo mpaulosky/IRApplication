@@ -13,9 +13,10 @@ using Moq;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
+using TestHelpers;
 
 using Xunit;
 
@@ -244,7 +245,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var issue = new NewIssueDto() { IssueDescription = issueDescription, InitiatorId = initiatorId, InitiatorName = initiatorName };
 
-				TestHelpers.MockModelState(issue, ControllerUnderTest);
+				MockHelpers.MockModelState(issue, ControllerUnderTest);
 
 				// Act
 
@@ -368,7 +369,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var issue = new IssueForUpdateDto() { Id = 1, IssueDescription = issueDescription, InitiatorId = initiatorId, InitiatorName = initiatorName, DateModifiedUtc = DateTimeOffset.UtcNow };
 
-				TestHelpers.MockModelState(issue, ControllerUnderTest);
+				MockHelpers.MockModelState(issue, ControllerUnderTest);
 
 				// Act
 
@@ -538,20 +539,4 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 	}
-
-	public class TestHelpers
-	{
-		public static void MockModelState<TModel, TController>(TModel model, TController controller) where TController : ControllerBase
-		{
-			var validationContext = new ValidationContext(model, null, null);
-			var validationResults = new List<ValidationResult>();
-			Validator.TryValidateObject(model, validationContext, validationResults, true);
-			foreach (var validationResult in validationResults)
-			{
-				controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
-			}
-		}
-
-	}
-
 }

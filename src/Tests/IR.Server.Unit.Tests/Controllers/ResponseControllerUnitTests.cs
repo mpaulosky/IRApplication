@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using FluentAssertions;
+
 using IR.Server.Controllers;
 using IR.Shared.Dtos;
 using IR.Shared.Infrastructure;
 using IR.Shared.Interfaces;
 using IR.Shared.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using Moq;
+
+using TestHelpers;
+
 using Xunit;
 
 namespace IR.Server.Unit.Tests.Controllers
@@ -238,7 +245,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var response = new NewResponseDto() { ResponseDescription = responseText, ResponderId = initiatorId, ResponderName = initiatorName };
 
-				TestHelpers.MockModelState(response, ControllerUnderTest);
+				MockHelpers.MockModelState(response, ControllerUnderTest);
 
 				// Act
 
@@ -362,7 +369,7 @@ namespace IR.Server.Unit.Tests.Controllers
 
 				var response = new ResponseForUpdateDto() { Id = 1, ResponseDescription = responseText, ResponderId = responseerId, ResponderName = responseerName, DateModifiedUtc = DateTimeOffset.UtcNow };
 
-				TestHelpers.MockModelState(response, ControllerUnderTest);
+				MockHelpers.MockModelState(response, ControllerUnderTest);
 
 				// Act
 

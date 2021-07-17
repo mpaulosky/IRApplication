@@ -40,7 +40,7 @@ namespace IR.Shared.Services
 		public async Task<IEnumerable<CommentDto>> GetCommentsAsync()
 		{
 			var results = await _repository.SelectAllAsync<Comment>();
-			var items = _mapper.Map<List<CommentDto>>(results).AsEnumerable();
+			var items = _mapper.Map<IEnumerable<CommentDto>>(results);
 			return items;
 		}
 

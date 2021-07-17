@@ -6,7 +6,25 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Refactor Issue Exceptions" />
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Renamed Class IRCERApiException.cs to IRServerException.cs">
+      <change afterPath="$PROJECT_DIR$/src/Server/IR.Server/Controllers/CommentController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Dtos/CommentDtos.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Interfaces/ICommentService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/CommentServiceUnitTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/IR.Server/IR.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/IR.Server/IR.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Dtos/Dtos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Dtos/IssueDtos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotCreatedException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotDeletedException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotFoundException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotUpdatedException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Models/Comment.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-2" />
+        <entry key="$PROJECT_DIR$" value="feature-1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,6 +88,26 @@
       <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/IssueServiceUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Program.cs" />
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Startup.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRCERApiException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Interfaces/ICommentService.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentDto.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentForDeleteDto.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentForUpdateDto.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Dtos/NewCommentDto.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotCreatedException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotDeletedException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotFoundException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotUpdatedException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" />
+      <option value="$PROJECT_DIR$/src/Server/IR.Server/Controllers/CommentController.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Models/Comment.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentDtos.cs" />
+      <option value="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs" />
+      <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/CommentServiceUnitTests.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v3g0DXd1WanngnxCOJKvNiV2dk" />
@@ -82,6 +120,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994525" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -185,6 +224,7 @@
       <workItem from="1625795974148" duration="5082000" />
       <workItem from="1625949966370" duration="42000" />
       <workItem from="1625950106672" duration="8291000" />
+      <workItem from="1626474849149" duration="11073000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Unit Test Project&#10;&#10;IR.Shared.Unit.Tests">
       <created>1625797802836</created>
@@ -207,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625956052621</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Renamed Class IRCERApiException.cs to IRServerException.cs">
+      <created>1626475693228</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1626475693228</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,25 +269,25 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 46/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 88% 43/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -264,10 +311,44 @@
     <option name="myShow1" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added New Unit Test Project&#10;&#10;IR.Shared.Unit.Tests" />
     <MESSAGE value="Add Migrations and Refactor and Add Unit Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Migrations and Refactor and Add Unit Tests" />
+    <MESSAGE value="Renamed Class IRCERApiException.cs to IRServerException.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed Class IRCERApiException.cs to IRServerException.cs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs</url>
+          <line>368</line>
+          <properties documentPath="D:\MJP\repos\IRApplication\src\Tests\IR.Server.Unit.Tests\Controllers\CommentControllerUnitTests.cs" initialLine="368" containingFunctionPresentation="method 'CreateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync'">
+            <startOffsets>
+              <option value="13274" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13353" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs</url>
+          <line>364</line>
+          <properties documentPath="D:\MJP\repos\IRApplication\src\Tests\IR.Server.Unit.Tests\Controllers\CommentControllerUnitTests.cs" initialLine="364" containingFunctionPresentation="method 'CreateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync'">
+            <startOffsets>
+              <option value="13199" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13256" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

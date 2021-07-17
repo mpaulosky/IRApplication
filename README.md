@@ -5,7 +5,7 @@
 ### A tool to track issues and their resolution (IR).
 
 
-[![CodeQL](https://github.com/mpaulosky/IRApplication/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/mpaulosky/IRApplication/actions/workflows/codeql-analysis.yml) [![Build and Test](https://github.com/mpaulosky/IRApplication/actions/workflows/IRApplication.yaml/badge.svg)](https://github.com/mpaulosky/IRApplication/actions/workflows/IRApplication.yaml)
+[![CodeQL](https://github.com/mpaulosky/IRApplication/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/mpaulosky/IRApplication/actions/workflows/codeql-analysis.yml) [![Build and Test](https://github.com/mpaulosky/IRApplication/actions/workflows/IRApplication.yaml/badge.svg)](https://github.com/mpaulosky/IRApplication/actions/workflows/IRApplication.yaml) [![.NET code metrics](https://github.com/mpaulosky/IRApplication/actions/workflows/code-metrics.yml/badge.svg)](https://github.com/mpaulosky/IRApplication/actions/workflows/code-metrics.yml)
 
 ## How to Engage, Contribute, and Give Feedback
 

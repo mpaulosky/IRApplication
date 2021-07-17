@@ -6,7 +6,7 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="" />
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Refactor Issue Exceptions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-1" />
+        <entry key="$PROJECT_DIR$" value="feature-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,18 +46,12 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Models/BaseEntity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8517F607-C12A-4B50-8364-C3F896F0FE6F/b1/88a05d4c/Assert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Dtos/Dtos.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Models/Issue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Interfaces/IIssueService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Models/Comment.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Interfaces/IRepositoryWrapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Mapping/MappingProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2E9BEEB1-8083-4F4B-9ABE-A5F3DB1BC8BD/2B7/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Models/Comment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/23C4E601-3839-4471-9686-3C89842D5158/08/192dc7ae/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49954EB5-6C67-4E76-8BE7-A97E2A6794C3/36/CastleProxyFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Infrastructure/ErrorHandler/ErrorHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Interfaces/IIssueRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -79,7 +73,9 @@
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v3g0DXd1WanngnxCOJKvNiV2dk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -221,17 +217,30 @@
     <option name="coveragePercentColumnWidth" value="188" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="253" />
+    <option name="symbolColumnWidth" value="272" />
     <coverage-tree-state>
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 0% 310/310" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 0% 310/310" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 0% 310/310" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />

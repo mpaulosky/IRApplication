@@ -18,11 +18,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IR.Server", "src\Server\IR.Server.csproj", "{AD3482E2-F497-414C-91B1-04E42BDA3FF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7ECD1F05-206D-41F4-B961-7EF32F65CEA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{D3A61DB7-93E4-4C08-8B57-9D336DB7DA1E}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\code-metrics.yml = .github\workflows\code-metrics.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\IRApplication.yaml = .github\workflows\IRApplication.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{EDFB5899-EE82-4BA3-AFAF-B683D9290A98}"
 	ProjectSection(SolutionItems) = preProject
 		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
-		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
 		CONTRIBUTING.md = CONTRIBUTING.md
-		.github\workflows\IRApplication.yaml = .github\workflows\IRApplication.yaml
 		LICENSE = LICENSE
 		README.md = README.md
 		SECURITY.md = SECURITY.md
@@ -65,6 +72,8 @@ Global
 		{0A08AFE1-EBA0-4BDA-83C7-DF07D1094B4A} = {DE9BAF2E-C329-4BFA-AD2A-00A534D6AE02}
 		{C676ED46-1BC3-47F0-BDB1-26B993DF076B} = {F087F871-ED54-4606-AA35-ED3AFDAF4DEE}
 		{AD3482E2-F497-414C-91B1-04E42BDA3FF3} = {F087F871-ED54-4606-AA35-ED3AFDAF4DEE}
+		{D3A61DB7-93E4-4C08-8B57-9D336DB7DA1E} = {7ECD1F05-206D-41F4-B961-7EF32F65CEA3}
+		{EDFB5899-EE82-4BA3-AFAF-B683D9290A98} = {7ECD1F05-206D-41F4-B961-7EF32F65CEA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B857EF2E-2774-4096-9028-C00791C7795E}

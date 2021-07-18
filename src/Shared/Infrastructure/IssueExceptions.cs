@@ -49,7 +49,7 @@ namespace IR.Shared.Infrastructure
 	[Serializable]
 	public class IssueNotUpdatedException : IRServerException
 	{
-		public IssueNotUpdatedException(Issue issue)
+		public IssueNotUpdatedException(BaseEntity issue)
 			: this(issue.Id)
 		{
 		}

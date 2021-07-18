@@ -22,9 +22,9 @@ namespace TestHelpers
 		/// <summary>
 		/// Create DbSet Mock
 		/// </summary>
-		/// <typeparam name="T">The Enitity</typeparam>
+		/// <typeparam name="T">The Entity</typeparam>
 		/// <param name="elements"></param>
-		/// <returns>Mock<DbSet<T>></returns>
+		/// <returns>A Mock DbSet of type T</returns>
 		public static Mock<DbSet<T>> CreateDbSetMock<T>(IEnumerable<T> elements) where T : class
 		{
 			var elementsAsQueryable = elements.AsQueryable();
@@ -60,7 +60,7 @@ namespace TestHelpers
 		/// Create Mocked DataContext
 		/// </summary>
 		/// <param name="options">DbContextOptions</param>
-		/// <returns>Task<DataContext></returns>
+		/// <returns>A Task of type DataContext</returns>
 		public static async Task<DataContext> CreateMockedDataContext(DbContextOptions<DataContext> options)
 		{
 			try

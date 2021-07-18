@@ -6,7 +6,11 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="" />
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +95,10 @@
       <option value="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" />
       <option value="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" />
+      <option value="$PROJECT_DIR$/.github/workflows/code-metrics.yml" />
+      <option value="$PROJECT_DIR$/.github/workflows/codeql-analysis.yml" />
+      <option value="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" />
+      <option value="$PROJECT_DIR$/README.md" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v3g0DXd1WanngnxCOJKvNiV2dk" />
@@ -238,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626475693228</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main">
+      <created>1626647497830</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626647497830</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +316,8 @@
     <MESSAGE value="Added New Unit Test Project&#10;&#10;IR.Shared.Unit.Tests" />
     <MESSAGE value="Add Migrations and Refactor and Add Unit Tests" />
     <MESSAGE value="Renamed Class IRCERApiException.cs to IRServerException.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed Class IRCERApiException.cs to IRServerException.cs" />
+    <MESSAGE value="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -47,12 +47,19 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --configuration Release --no-restore --logger trx --collect:"XPlat Code Coverage" --results-directory "TestResults-${{ matrix.os }}"
-    - name: Upload dotnet test results
-      uses: actions/upload-artifact@v2
+      run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal <MyProject>.Tests/
+    - name: Create Test Coverage Badge
+      uses: simon-k/dotnet-code-coverage-badge@v1.0.0
+      id: create_coverage_badge
       with:
-        name: dotnet-results-${{ matrix.os }}
-        path: TestResults-${{ matrix.os }}
+        label: Unit Test Coverage
+        color: brightgreen
+        path: <MyProject>.Tests/TestResults/coverage.opencover.xml
+        gist-filename: code-coverage.json
+        gist-id: 9c953d09719b6db8de5368809b1ce856
+        gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}
+    - name: Print code coverage
+      run: echo "Code coverage percentage ${{steps.create_coverage_badge.outputs.percentage}}%"
 
-      # Use always() to always run this step to publish test results when there are test failures
-      if: ${{ always() }}
+    - name: Print badge data
+      run: echo "Badge data ${{steps.test_step.outputs.badge}}"

@@ -7,8 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/ResponseExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/ResponseExceptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,9 +55,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8517F607-C12A-4B50-8364-C3F896F0FE6F/b1/88a05d4c/Assert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Mapping/MappingProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2E9BEEB1-8083-4F4B-9ABE-A5F3DB1BC8BD/2B7/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Models/Comment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/23C4E601-3839-4471-9686-3C89842D5158/08/192dc7ae/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49954EB5-6C67-4E76-8BE7-A97E2A6794C3/36/CastleProxyFactory.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -63,12 +66,10 @@
       <option value="$PROJECT_DIR$/src/Shared/Dtos/Dtos.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/ErrorHandler/ErrorHandler.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Interfaces/IIssueService.cs" />
-      <option value="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" />
       <option value="$PROJECT_DIR$/src/Tests/TestHelpers/TestHelpers.csproj" />
       <option value="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/IssueControllerUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Data/DataContext.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Interfaces/IRepositoryWrapper.cs" />
-      <option value="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" />
       <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Repositories/RepositoryUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/IssueServiceUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Program.cs" />
@@ -79,13 +80,10 @@
       <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentForDeleteDto.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentForUpdateDto.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Dtos/NewCommentDto.cs" />
-      <option value="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotCreatedException.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotDeletedException.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotFoundException.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueNotUpdatedException.cs" />
-      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" />
-      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" />
       <option value="$PROJECT_DIR$/src/Server/IR.Server/Controllers/CommentController.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Models/Comment.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Dtos/CommentDtos.cs" />
@@ -93,6 +91,13 @@
       <option value="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/Services/CommentServiceUnitTests.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Mapping/MappingProfile.cs" />
       <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IRServerException.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Infrastructure/ResponseExceptions.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" />
+      <option value="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" />
+      <option value="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v3g0DXd1WanngnxCOJKvNiV2dk" />
@@ -210,6 +215,7 @@
       <workItem from="1625949966370" duration="42000" />
       <workItem from="1625950106672" duration="8291000" />
       <workItem from="1626474849149" duration="11073000" />
+      <workItem from="1626644775554" duration="1321000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Unit Test Project&#10;&#10;IR.Shared.Unit.Tests">
       <created>1625797802836</created>
@@ -249,30 +255,30 @@
     <option name="coveragePercentColumnWidth" value="188" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="272" />
+    <option name="symbolColumnWidth" value="282" />
     <coverage-tree-state>
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 54% 611/1335" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 49% 191/372" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -309,26 +315,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs</url>
-          <line>368</line>
+          <line>371</line>
           <properties documentPath="D:\MJP\repos\IRApplication\src\Tests\IR.Server.Unit.Tests\Controllers\CommentControllerUnitTests.cs" initialLine="368" containingFunctionPresentation="method 'CreateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync'">
             <startOffsets>
-              <option value="13274" />
+              <option value="13277" />
             </startOffsets>
             <endOffsets>
-              <option value="13353" />
+              <option value="13356" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/Controllers/CommentControllerUnitTests.cs</url>
-          <line>364</line>
+          <line>367</line>
           <properties documentPath="D:\MJP\repos\IRApplication\src\Tests\IR.Server.Unit.Tests\Controllers\CommentControllerUnitTests.cs" initialLine="364" containingFunctionPresentation="method 'CreateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync'">
             <startOffsets>
-              <option value="13199" />
+              <option value="13206" />
             </startOffsets>
             <endOffsets>
-              <option value="13256" />
+              <option value="13259" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

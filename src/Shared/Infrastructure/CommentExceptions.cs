@@ -48,7 +48,7 @@ namespace IR.Shared.Infrastructure
 	[Serializable]
 	public class CommentNotUpdatedException : IRServerException
 	{
-		public CommentNotUpdatedException(Comment comment)
+		public CommentNotUpdatedException(BaseEntity comment)
 			: this(comment.Id)
 		{
 		}

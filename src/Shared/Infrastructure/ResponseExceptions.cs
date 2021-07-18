@@ -48,7 +48,7 @@ namespace IR.Shared.Infrastructure
 	[Serializable]
 	public class ResponseNotUpdatedException : IRServerException
 	{
-		public ResponseNotUpdatedException(Response response)
+		public ResponseNotUpdatedException(BaseEntity response)
 			: this(response.Id)
 		{
 		}

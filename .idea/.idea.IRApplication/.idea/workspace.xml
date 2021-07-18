@@ -6,15 +6,7 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/CommentExceptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/IssueExceptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/ResponseExceptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/ResponseExceptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/CommentService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/IssueService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Services/ResponseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TestHelpers/MockHelpers.cs" afterDir="false" />
-    </list>
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +48,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8517F607-C12A-4B50-8364-C3F896F0FE6F/b1/88a05d4c/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2E9BEEB1-8083-4F4B-9ABE-A5F3DB1BC8BD/2B7/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/MJP/repos/IRApplication/src/Shared/Infrastructure/CommentExceptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/23C4E601-3839-4471-9686-3C89842D5158/08/192dc7ae/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49954EB5-6C67-4E76-8BE7-A97E2A6794C3/36/CastleProxyFactory.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -260,25 +253,25 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 89% 57/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="SRC 97% 51/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="IR.Shared 91% 48/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="SRC 97% 60/1876" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 89% 57/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="IR.Shared 89% 57/515" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />

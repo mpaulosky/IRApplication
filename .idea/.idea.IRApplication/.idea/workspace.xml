@@ -6,7 +6,9 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="moved the runsettings.xml file to correct location" />
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -277,7 +279,42 @@
       <option name="project" value="LOCAL" />
       <updated>1626653508801</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed test configuration error">
+      <created>1626653869437</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1626653869437</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Another try at fixing build">
+      <created>1626654632178</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1626654632178</updated>
+    </task>
+    <task id="LOCAL-00012" summary="another try to fix build">
+      <created>1626655108761</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1626655108761</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Still trying to find the results file for coverage">
+      <created>1626655410798</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1626655410798</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Another try">
+      <created>1626656563679</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1626656563679</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +392,12 @@
     <MESSAGE value="Remove Windows Build" />
     <MESSAGE value="Fix Error on Test Run in IRApplication.yaml" />
     <MESSAGE value="moved the runsettings.xml file to correct location" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved the runsettings.xml file to correct location" />
+    <MESSAGE value="Fixed test configuration error" />
+    <MESSAGE value="Another try at fixing build" />
+    <MESSAGE value="another try to fix build" />
+    <MESSAGE value="Still trying to find the results file for coverage" />
+    <MESSAGE value="Another try" />
+    <option name="LAST_COMMIT_MESSAGE" value="Another try" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

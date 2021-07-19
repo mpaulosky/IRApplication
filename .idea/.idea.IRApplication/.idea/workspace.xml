@@ -6,8 +6,11 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Added Coverage Badge to README.md&#10;&#10;Updated the IRApplication.yaml to produce the coverage report for the Badge">
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Remove Windows Build">
+      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/runsettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/runsettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626650770788</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Remove Windows Build">
+      <created>1626651004223</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626651004223</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +309,16 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -323,7 +343,8 @@
     <MESSAGE value="Renamed Class IRCERApiException.cs to IRServerException.cs" />
     <MESSAGE value="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main" />
     <MESSAGE value="Added Coverage Badge to README.md&#10;&#10;Updated the IRApplication.yaml to produce the coverage report for the Badge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Coverage Badge to README.md&#10;&#10;Updated the IRApplication.yaml to produce the coverage report for the Badge" />
+    <MESSAGE value="Remove Windows Build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove Windows Build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

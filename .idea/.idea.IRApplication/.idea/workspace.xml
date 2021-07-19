@@ -6,12 +6,7 @@
     <projectFile>IR/Client/IR.Client.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="Remove Windows Build">
-      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Server.Unit.Tests/runsettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/IR.Shared.Unit.Tests/runsettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/IRApplication.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IRApplication/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4f232eb6-82be-432c-8569-d24506027b85" name="Default Changelist" comment="moved the runsettings.xml file to correct location" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -268,7 +263,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626651004223</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix Error on Test Run in IRApplication.yaml">
+      <created>1626652899377</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1626652899377</updated>
+    </task>
+    <task id="LOCAL-00009" summary="moved the runsettings.xml file to correct location">
+      <created>1626653508801</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1626653508801</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +353,9 @@
     <MESSAGE value="Change When Workflows Are Run&#10;&#10;Changed code-metrics.yml and codeql-analysis.yml when they run to only on main" />
     <MESSAGE value="Added Coverage Badge to README.md&#10;&#10;Updated the IRApplication.yaml to produce the coverage report for the Badge" />
     <MESSAGE value="Remove Windows Build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove Windows Build" />
+    <MESSAGE value="Fix Error on Test Run in IRApplication.yaml" />
+    <MESSAGE value="moved the runsettings.xml file to correct location" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved the runsettings.xml file to correct location" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

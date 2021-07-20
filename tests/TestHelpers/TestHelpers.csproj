@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Shared\IR.Shared.csproj" />
+	  <ProjectReference Include="..\..\src\Shared\IR.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

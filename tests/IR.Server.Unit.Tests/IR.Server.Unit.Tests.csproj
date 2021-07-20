@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Server\IR.Server.csproj" />
-    <ProjectReference Include="..\..\Shared\IR.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Server\IR.Server.csproj" />
+    <ProjectReference Include="..\..\src\Shared\IR.Shared.csproj" />
     <ProjectReference Include="..\TestHelpers\TestHelpers.csproj" />
   </ItemGroup>
 

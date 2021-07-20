@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IR.Shared.Migrations
 {
+	[ExcludeFromCodeCoverage]
 	public partial class initialMigration : Migration
 	{
 		protected override void Up(MigrationBuilder migrationBuilder)

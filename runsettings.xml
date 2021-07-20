@@ -6,15 +6,7 @@
 				<Configuration>
 					<Format>opencover</Format>
 					<CodeCoverage>
-						<!-- Match the path of the source files in which each method is defined: -->
 
-						<Functions>
-							<Exclude>
-								<!-- Exclude everthing inside the namesapce "IR.Shared.Migrations" -->
-								<Function>^IR.Shared.Migrations\..*</Function>
-							</Exclude>
-						</Functions>
-						
 						<!-- We recommend you do not change the following values: -->
 
 						<!-- Set this to True to collect coverage information for functions marked with the "SecuritySafeCritical" attribute. Instead of writing directly into a memory location from such functions, code coverage inserts a probe that redirects to another function, which in turns writes into memory. -->

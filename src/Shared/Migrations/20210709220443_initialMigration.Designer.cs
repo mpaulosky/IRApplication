@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IR.Shared.Migrations
 {
-	[ExcludeFromCodeCoverage]
 	[DbContext(typeof(DataContext))]
 	[Migration("20210709220443_initialMigration")]
 	partial class initialMigration

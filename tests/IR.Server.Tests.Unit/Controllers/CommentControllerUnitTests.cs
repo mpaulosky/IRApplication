@@ -16,7 +16,7 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Server.Unit.Tests.Controllers
+namespace IR.Server.Tests.Unit.Controllers
 {
 	public class CommentControllerUnitTests
 	{

@@ -18,7 +18,7 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Shared.Unit.Tests.Services
+namespace IR.Shared.Tests.Unit.Services
 {
 	public class ResponseServiceUnitTests
 	{

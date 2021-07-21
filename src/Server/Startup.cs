@@ -12,12 +12,14 @@ using IR.Shared.Mapping;
 using IR.Shared.Repositories;
 using IR.Shared.Services;
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 
 namespace IR.Server
@@ -35,9 +37,17 @@ namespace IR.Server
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+				.AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+
+			services.Configure<JwtBearerOptions>(
+				JwtBearerDefaults.AuthenticationScheme,
+				options => { options.TokenValidationParameters.NameClaimType = "name"; });
+
+
 			services.AddDbContext<DataContext>(
 				o => o.UseSqlServer(
-					Configuration.GetConnectionString("IRDataConnection")));
+					Configuration.GetConnectionString("IRDataConnection"), b => b.MigrationsAssembly("IR.Shared")));
 
 			services.AddControllers().AddNewtonsoftJson();
 
@@ -75,7 +85,8 @@ namespace IR.Server
 
 			services.AddScoped<IRepository, Repository<DataContext>>();
 			services.AddScoped<IIssueService, IssueService>();
-			services.AddScoped<ICommentService,CommentService>();
+			services.AddScoped<ICommentService, CommentService>();
+			services.AddScoped<IResponseService, ResponseService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,11 +96,11 @@ namespace IR.Server
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseSwagger();
-				app.UseSwaggerUI(c => 
+				app.UseSwaggerUI(c =>
 				{
 					c.DisplayOperationId(); // To show the name of the methods on the right side of the UI
 					c.SwaggerEndpoint("/swagger/v1/swagger.json", "IR.Server v1");
-					});
+				});
 			}
 
 			app.UseHttpsRedirection();

@@ -14,7 +14,7 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Shared.Unit.Tests.Repositories
+namespace IR.Shared.Tests.Unit.Repositories
 {
 	public class RepositoryUnitTests
 	{

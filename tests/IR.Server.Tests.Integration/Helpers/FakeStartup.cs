@@ -1,9 +1,9 @@
-﻿using System;
-using IR.Shared.Data;
+﻿using IR.Shared.Data;
 using IR.Shared.Interfaces;
 using IR.Shared.Models;
 using IR.Shared.Repositories;
 using IR.Shared.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
+
+using System;
+using System.Linq;
 
 namespace IR.Server.Tests.Integration.Helpers
 {
@@ -25,6 +28,10 @@ namespace IR.Server.Tests.Integration.Helpers
 
 		public virtual void ConfigureServices(IServiceCollection services)
 		{
+			var descriptor = services.SingleOrDefault(
+		d => d.ServiceType == typeof(DbContextOptions<DataContext>));
+			services.Remove(descriptor);
+
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
@@ -34,7 +41,7 @@ namespace IR.Server.Tests.Integration.Helpers
 
 			services.AddDbContext<DataContext>(
 				o => o.UseSqlServer(
-					Configuration.GetConnectionString("IRCERDataConnection")));
+					Configuration.GetConnectionString("TestConnection")));
 
 
 			services.AddScoped<IRepository, Repository<DataContext>>();
@@ -63,6 +70,7 @@ namespace IR.Server.Tests.Integration.Helpers
 			});
 
 			var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
 			using (var serviceScope = serviceScopeFactory.CreateScope())
 			{
 				var dbContext = serviceScope.ServiceProvider.GetService<DataContext>();
@@ -71,7 +79,7 @@ namespace IR.Server.Tests.Integration.Helpers
 					throw new NullReferenceException("Cannot get instance of dbContext");
 				}
 
-				if (dbContext.Database.GetDbConnection().ConnectionString.ToLower().Contains("live.db"))
+				if (dbContext.Database.GetDbConnection().ConnectionString.ToLower().Contains("TestConnection"))
 				{
 					throw new Exception("LIVE SETTINGS IN TESTS!");
 				}
@@ -79,8 +87,8 @@ namespace IR.Server.Tests.Integration.Helpers
 				dbContext.Database.EnsureDeleted();
 				dbContext.Database.EnsureCreated();
 
-				dbContext.Issues.Add(new Issue { Id = 1, IssueDescription = "Customer 1" });
-				dbContext.Issues.Add(new Issue { Id = 2, IssueDescription = "Customer 2" });
+				dbContext.Issues.Add(new Issue { Id = 1, IssueDescription = "Customer 1", InitiatorId = new Guid().ToString(), InitiatorName = "test.tester@tester.com", IsDeleted = false, IsResolved = false });
+				dbContext.Issues.Add(new Issue { Id = 2, IssueDescription = "Customer 2", InitiatorId = new Guid().ToString(), InitiatorName = "test.tester@tester.com", IsDeleted = false, IsResolved = false });
 				dbContext.SaveChanges();
 			}
 		}

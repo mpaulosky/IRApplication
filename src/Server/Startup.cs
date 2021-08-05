@@ -47,7 +47,8 @@ namespace IR.Server
 
 			services.AddDbContext<DataContext>(
 				o => o.UseSqlServer(
-					Configuration.GetConnectionString("IRDataConnection"), b => b.MigrationsAssembly("IR.Shared")));
+					Configuration.GetConnectionString("IRDataConnection"),
+					b => b.MigrationsAssembly("IR.Shared")));
 
 			services.AddControllers().AddNewtonsoftJson();
 

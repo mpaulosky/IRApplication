@@ -33,11 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EDFB5899-E
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE = LICENSE
 		README.md = README.md
+		REFERENCES.md = REFERENCES.md
 		runsettings.xml = runsettings.xml
 		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IR.Server.Tests.Integration", "tests\IR.Server.Tests.Integration\IR.Server.Tests.Integration.csproj", "{FB9CD7D0-0981-4D25-92D3-0C0EC434229C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IR.Server.Tests.Integration", "tests\IR.Server.Tests.Integration\IR.Server.Tests.Integration.csproj", "{FB9CD7D0-0981-4D25-92D3-0C0EC434229C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

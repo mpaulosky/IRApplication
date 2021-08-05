@@ -66,7 +66,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="id">int</param>
 		/// <returns>IActionResult</returns>
-		[HttpGet("/comments/{id}", Name = nameof(GetCommentByIdAsync))]
+		[HttpGet("/comment/{id}", Name = nameof(GetCommentByIdAsync))]
 		[ProducesResponseType(typeof(CommentDto), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> GetCommentByIdAsync([Required] long id)
@@ -95,7 +95,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="comment">CommentForCreationDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpPost("/comments", Name = nameof(CreateCommentAsync))]
+		[HttpPost("/comment", Name = nameof(CreateCommentAsync))]
 		[ProducesResponseType(typeof(CommentDto), StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> CreateCommentAsync([FromBody] NewCommentDto comment)
@@ -131,7 +131,7 @@ namespace IR.Server.Controllers
 		/// <param name="id">int Comment Id</param>
 		/// <param name="comment">CommentForUpdateDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpPut("/comments/{id}", Name = nameof(UpdateCommentAsync))]
+		[HttpPut("/comment/{id}", Name = nameof(UpdateCommentAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -171,7 +171,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="comment">CommentForDeleteDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpDelete("/comments", Name = nameof(DeleteCommentAsync))]
+		[HttpDelete("/comment", Name = nameof(DeleteCommentAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> DeleteCommentAsync([FromBody] CommentForDeleteDto comment)

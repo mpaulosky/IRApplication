@@ -18,7 +18,7 @@ namespace IR.Server.Tests.Integration.Controllers
 	{
 		public CommentControllerTests(CustomWebApplicationFactory<Startup> fixture) : base(fixture) { }
 
-		[Trait("Integration", "GetCommentsAsync"), Fact()]
+		[Fact()]
 		public async Task GetCommentsAsync_With_With_Two_Comments_Should_Return_One_result_TestAsync()
 		{
 			// Arrange, Act
@@ -40,7 +40,7 @@ namespace IR.Server.Tests.Integration.Controllers
 			result[0].CommenterName.Should().Be("test.tester@tester.com");
 		}
 
-		[Trait("Integration", "GetCommentsAsync"), Fact]
+		[Fact]
 		public async Task GetCommentsAsync_With_invalid_config_Should_Fesult_in_a_bad_request_TestAsync()
 		{
 			// Arrange
@@ -62,7 +62,9 @@ namespace IR.Server.Tests.Integration.Controllers
 			response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 		}
 
-		[Trait("Integration", "GetCommentByIdAsync"), Theory(), InlineData(2), InlineData(3)]
+		[Theory()]
+		[InlineData(2)]
+		[InlineData(3)]
 		public async Task GetCommentByIdAsync_With_Invalid_Ids_Should_Return_NotFound_TestAsync(long id)
 		{
 			// Arrange, Act
@@ -74,7 +76,7 @@ namespace IR.Server.Tests.Integration.Controllers
 			response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 		}
 
-		[Trait("Integration", "GetCommentByIdAsync"), Fact]
+		[Fact]
 		public async Task GetCommentByIdAsync_With_Valid_Id_Should_Return_One_Result_TestAsync()
 		{
 			// Arrange

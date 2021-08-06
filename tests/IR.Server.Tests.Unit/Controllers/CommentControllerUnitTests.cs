@@ -37,7 +37,7 @@ namespace IR.Server.Tests.Unit.Controllers
 
 		public class GetCommentsAsync : CommentControllerUnitTests
 		{
-			[Trait("Unit Tests", "GetCommentsAsync"), Fact(DisplayName = "GetCommentsAsync Returns All Comments")]
+			[Fact(DisplayName = "GetCommentsAsync Returns All Comments")]
 			public async Task GetCommentsAsync_Should_Return_All_Comments_TestAsync()
 			{
 				// Arrange
@@ -71,7 +71,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				Assert.Same(expectedComments, content.Value);
 			}
 
-			[Trait("Unit Tests", "GetCommentsAsync"), Fact(DisplayName = "GetCommentsAsync With Error")]
+			[Fact(DisplayName = "GetCommentsAsync With Error")]
 			public async Task GetCommentsAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
 			{
 				// Arrange
@@ -104,7 +104,7 @@ namespace IR.Server.Tests.Unit.Controllers
 
 		public class GetCommentByIdAsync : CommentControllerUnitTests
 		{
-			[Trait("Unit Tests", "GetCommentByIdAsync"), Fact()]
+			[Fact()]
 			public async Task GetCommentByIdAsync_With_A_Valid_Id_Should_Return_OkObjectResult_with_a_Comment_Test()
 			{
 				// Arrange
@@ -133,7 +133,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				Assert.Same(expectedComment, content.Value);
 			}
 
-			[Trait("Unit Tests", "GetCommentByIdAsync"), Fact()]
+			[Fact()]
 			public async Task GetCommentByIdAsync_With_An_InValid_Id_Should_Return_NotFoundResult_when_CommentNotFoundException_is_thrown_Test()
 			{
 				// Arrange
@@ -153,7 +153,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				Assert.IsType<NotFoundResult>(result);
 			}
 
-			[Trait("Unit Tests", "GetCommentByIdAsync"), Fact()]
+			[Fact()]
 			public async Task GetCommentByIdAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
 			{
 				// Arrange
@@ -184,7 +184,7 @@ namespace IR.Server.Tests.Unit.Controllers
 
 		public class CreateCommentAsync : CommentControllerUnitTests
 		{
-			[Trait("Unit Tests", "CreateCommentAsync"), Fact()]
+			[Fact()]
 			public async Task CreateCommentAsync_Should_Return_CreatedAtActionResult_With_The_created_Comment_Test()
 			{
 				// Arrange
@@ -210,7 +210,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				);
 			}
 
-			[Trait("Unit Tests", "CreateCommentAsync"), Fact()]
+			[Fact()]
 			public async Task CreateCommentAsync_With_Null_CommentForCreationDto_Should_Return_BadRequest_Test()
 			{
 				// Arrange
@@ -228,7 +228,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
 			}
 
-			[Trait("Unit Tests", "CreateCommentAsync"), Theory(DisplayName = "CreateCommentAsync With InValid NewCommentDto")]
+			[Theory(DisplayName = "CreateCommentAsync With InValid NewCommentDto")]
 			[InlineData("", "test", "test", "Invalid comment object sent from client", "Comment Is Required", "CommentDescription")]
 			[InlineData(null, "test", "test", "Invalid comment object sent from client", "Comment Is Required", "CommentDescription")]
 			[InlineData("test", "", "test", "Invalid comment object sent from client", "Commenter Id Is Required", "CommenterId")]
@@ -261,7 +261,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				errors[0].Value.As<string[]>()[0].Should().BeEquivalentTo(expectedValidationError);
 			}
 
-			[Trait("Unit Tests", "CreateCommentAsync"), Fact()]
+			[Fact()]
 			public async Task CreateCommentAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
 			{
 				// Arrange
@@ -292,7 +292,7 @@ namespace IR.Server.Tests.Unit.Controllers
 
 		public class UpdateCommentAsync : CommentControllerUnitTests
 		{
-			[Trait("Unit Tests", "UpdateCommentAsync"), Fact]
+			[Fact]
 			public async Task UpdateCommentAsync_Should_return_NoContentResult_Test()
 			{
 				// Arrange
@@ -312,7 +312,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				result.Should().BeOfType<NoContentResult>();
 			}
 
-			[Trait("Unit Tests", "UpdateCommentAsync"), Fact()]
+			[Fact()]
 			public async Task UpdateCommentAsync_With_Null_CommentForCreationDto_Should_Return_BadRequest_Test()
 			{
 				// Arrange
@@ -330,7 +330,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
 			}
 
-			[Trait("Unit Tests", "UpdateCommentAsync"), Fact]
+			[Fact]
 			public async Task UpdateCommentAsync_Should_return_NotFoundResult_when_CommentNotFoundException_is_thrown()
 			{
 				// Arrange
@@ -352,7 +352,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				Assert.IsType<NotFoundResult>(result);
 			}
 
-			[Trait("Unit Tests", "UpdateCommentAsync"), Theory(DisplayName = "UpdateCommentAsync With InValid NewCommentDto")]
+			[Theory(DisplayName = "UpdateCommentAsync With InValid NewCommentDto")]
 			[InlineData("", "test", "test", "Invalid comment object sent from client", "Comment Is Required", "CommentDescription")]
 			[InlineData(null, "test", "test", "Invalid comment object sent from client", "Comment Is Required", "CommentDescription")]
 			[InlineData("test", "", "test", "Invalid comment object sent from client", "Commenter Id Is Required", "CommenterId")]
@@ -385,7 +385,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				errors[0].Value.As<string[]>()[0].Should().BeEquivalentTo(expectedValidationError);
 			}
 
-			[Trait("Unit Tests", "UpdateCommentAsync"), Fact()]
+			[Fact()]
 			public async Task UpdateCommentAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
 			{
 				// Arrange
@@ -416,7 +416,7 @@ namespace IR.Server.Tests.Unit.Controllers
 
 		public class DeleteCommentAsync : CommentControllerUnitTests
 		{
-			[Trait("Unit Tests", "DeleteCommentAsync"), Fact]
+			[Fact]
 			public async Task DeleteCommentAsync_With_Valid_Id_Should_return_NoContentResult_on_successful_delete_Test()
 			{
 				// Arrange
@@ -436,7 +436,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				result.Should().BeOfType<NoContentResult>();
 			}
 
-			[Trait("Unit Tests", "DeleteCommentAsync"), Fact()]
+			[Fact()]
 			public async Task DeleteCommentAsync_With_Null_CommentForCreationDto_Should_Return_BadRequest_Test()
 			{
 				// Arrange
@@ -454,7 +454,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
 			}
 
-			[Trait("Unit Tests", "DeleteCommentAsync"), Fact]
+			[Fact]
 			public async Task DeleteCommentAsync_Should_return_NotFoundResult_when_CommentNotFoundException_is_thrown_Test()
 			{
 				// Arrange
@@ -476,7 +476,7 @@ namespace IR.Server.Tests.Unit.Controllers
 				Assert.IsType<NotFoundResult>(result);
 			}
 
-			[Trait("Unit Tests", "DeleteCommentAsync"), Fact()]
+			[Fact()]
 			public async Task DeleteCommentAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
 			{
 				// Arrange

@@ -1,12 +1,10 @@
-﻿using FluentAssertions;
-
+﻿using System;
+using FluentAssertions;
 using IR.Shared.Dtos;
 using IR.Shared.Interfaces;
 using IR.Shared.Models;
-
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -14,12 +12,14 @@ using Xunit;
 
 namespace IR.Server.Tests.Integration.Controllers
 {
-	public class CommentControllerTests : IntegrationTest
+	public class CommentControllerIntegrationTests : IntegrationTest
 	{
-		public CommentControllerTests(CustomWebApplicationFactory<Startup> fixture) : base(fixture) { }
+		public CommentControllerIntegrationTests(CustomWebApplicationFactory<Startup> fixture) : base(fixture)
+		{
+		}
 
-		[Fact()]
-		public async Task GetCommentsAsync_With_With_Two_Comments_Should_Return_One_result_TestAsync()
+		[Fact(DisplayName = "GetCommentsAsync Should Return All")]
+		public async Task GetCommentsAsync_Should_Return_One_result_TestAsync()
 		{
 			// Arrange, Act
 
@@ -40,7 +40,7 @@ namespace IR.Server.Tests.Integration.Controllers
 			result[0].CommenterName.Should().Be("test.tester@tester.com");
 		}
 
-		[Fact]
+		[Fact(DisplayName = "GetCommentsAsync with invalid config")]
 		public async Task GetCommentsAsync_With_invalid_config_Should_Fesult_in_a_bad_request_TestAsync()
 		{
 			// Arrange
@@ -62,7 +62,7 @@ namespace IR.Server.Tests.Integration.Controllers
 			response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 		}
 
-		[Theory()]
+		[Theory(DisplayName = "GetCommentByIdAsync with invalid Id's")]
 		[InlineData(2)]
 		[InlineData(3)]
 		public async Task GetCommentByIdAsync_With_Invalid_Ids_Should_Return_NotFound_TestAsync(long id)
@@ -76,15 +76,15 @@ namespace IR.Server.Tests.Integration.Controllers
 			response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 		}
 
-		[Fact]
+		[Fact(DisplayName = "GetCommentByIdAsync with valid Id")]
 		public async Task GetCommentByIdAsync_With_Valid_Id_Should_Return_One_Result_TestAsync()
 		{
 			// Arrange
-			
+
 			const long id = 1;
-			
+
 			// Act
-			
+
 			var response = await _client.GetAsync($"/comment/{id}");
 			var result = await _client.GetAndDeserialize<CommentDto>($"/comment/{id}");
 
@@ -97,6 +97,19 @@ namespace IR.Server.Tests.Integration.Controllers
 			result.CommentDescription.Should().Be("Comment 1");
 
 			result.CommenterName.Should().Be("test.tester@tester.com");
+		}
+
+		[Fact(DisplayName = "CreateCommentAsync")]
+		public void CreateCommentAsync_With_Valid_Entry_Should_Return_Success_Test()
+		{
+			// Arrange
+
+			var thisDate = DateTimeOffset.UtcNow;
+			var newComment = new NewCommentDto{ CommentDescription = "Comment 2", CommenterId = "C8940D76-6496-4727-AA38-5C20FDC907C7", CommenterName = "test.tester2@tester.com", IsDeleted = false, ResponseId = 1, DateAddedUtc = thisDate, DateModifiedUtc = thisDate };
+			
+			// Act
+
+			// Assert
 		}
 	}
 

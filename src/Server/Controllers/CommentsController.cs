@@ -21,10 +21,10 @@ namespace IR.Server.Controllers
 	[ApiController]
 	[Produces(MediaTypeNames.Application.Json)]
 	[Consumes(MediaTypeNames.Application.Json)]
-	public class CommentController : ControllerBase
+	public class CommentsController : ControllerBase
 	{
 		private readonly ICommentService _commentService;
-		private readonly ILogger<CommentController> _logger;
+		private readonly ILogger<CommentsController> _logger;
 
 		/// <summary>
 		/// CommentController Constructor
@@ -32,7 +32,7 @@ namespace IR.Server.Controllers
 		/// <param name="commentService">ICommentService</param>
 		/// <param name="logger">ILogger</param>
 		/// <exception cref="ArgumentNullException">ArgumentNullException</exception>
-		public CommentController(ICommentService commentService, ILogger<CommentController> logger)
+		public CommentsController(ICommentService commentService, ILogger<CommentsController> logger)
 		{
 			_commentService = commentService ?? throw new ArgumentNullException(nameof(commentService));
 			_logger = logger;
@@ -66,7 +66,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="id">int</param>
 		/// <returns>IActionResult</returns>
-		[HttpGet("/comment/{id}", Name = nameof(GetCommentByIdAsync))]
+		[HttpGet("/comments/{id}", Name = nameof(GetCommentByIdAsync))]
 		[ProducesResponseType(typeof(CommentDto), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> GetCommentByIdAsync([Required] long id)
@@ -95,7 +95,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="comment">CommentForCreationDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpPost("/comment", Name = nameof(CreateCommentAsync))]
+		[HttpPost("/comments", Name = nameof(CreateCommentAsync))]
 		[ProducesResponseType(typeof(CommentDto), StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> CreateCommentAsync([FromBody] NewCommentDto comment)
@@ -131,7 +131,7 @@ namespace IR.Server.Controllers
 		/// <param name="id">int Comment Id</param>
 		/// <param name="comment">CommentForUpdateDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpPut("/comment/{id}", Name = nameof(UpdateCommentAsync))]
+		[HttpPut("/comments/{id}", Name = nameof(UpdateCommentAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -143,6 +143,12 @@ namespace IR.Server.Controllers
 				{
 					_logger.LogError("Comment object sent from client is null");
 					return BadRequest("Comment object sent from client is null.");
+				}
+
+				if (id != comment.Id)
+				{
+					_logger.LogError("Invalid comment object sent from client");
+					return BadRequest("Invalid comment object sent from client");
 				}
 
 				if (!ModelState.IsValid)
@@ -171,7 +177,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="comment">CommentForDeleteDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpDelete("/comment", Name = nameof(DeleteCommentAsync))]
+		[HttpPut("/comments", Name = nameof(DeleteCommentAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> DeleteCommentAsync([FromBody] CommentForDeleteDto comment)

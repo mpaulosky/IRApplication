@@ -21,10 +21,10 @@ namespace IR.Server.Controllers
 	[ApiController]
 	[Produces(MediaTypeNames.Application.Json)]
 	[Consumes(MediaTypeNames.Application.Json)]
-	public class IssueController : ControllerBase
+	public class IssuesController : ControllerBase
 	{
 		private readonly IIssueService _issueService;
-		private readonly ILogger<IssueController> _logger;
+		private readonly ILogger<IssuesController> _logger;
 
 		/// <summary>
 		/// IssueController Constructor
@@ -32,7 +32,7 @@ namespace IR.Server.Controllers
 		/// <param name="issueService">IIssueService</param>
 		/// <param name="logger">ILogger</param>
 		/// <exception cref="ArgumentNullException">ArgumentNullException</exception>
-		public IssueController(IIssueService issueService, ILogger<IssueController> logger)
+		public IssuesController(IIssueService issueService, ILogger<IssuesController> logger)
 		{
 			_issueService = issueService ?? throw new ArgumentNullException(nameof(issueService));
 			_logger = logger;
@@ -48,7 +48,7 @@ namespace IR.Server.Controllers
 		{
 			try
 			{
-				var allIssues = await _issueService.GetIssuesAsync();
+				List<IssueDto> allIssues = (List<IssueDto>)await _issueService.GetIssuesAsync();
 
 				_logger.LogInformation("Returned all issues from database");
 
@@ -171,7 +171,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="issue">IssueForDeleteDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpDelete("/issues", Name = nameof(DeleteIssueAsync))]
+		[HttpPut("/issues", Name = nameof(DeleteIssueAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> DeleteIssueAsync([FromBody] IssueForDeleteDto issue)

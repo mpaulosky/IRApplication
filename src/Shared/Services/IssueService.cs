@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace IR.Shared.Services
@@ -42,7 +43,12 @@ namespace IR.Shared.Services
 		public async Task<IEnumerable<IssueDto>> GetIssuesAsync()
 		{
 			var results = await _repository.SelectAllAsync<Issue>();
-			var items = _mapper.Map<IEnumerable<IssueDto>>(results);
+
+			var orderByResult = from s in results
+													orderby s.Id
+													select s;
+
+			var items = _mapper.Map<IEnumerable<IssueDto>>(orderByResult.ToList<Issue>());
 			return items;
 		}
 

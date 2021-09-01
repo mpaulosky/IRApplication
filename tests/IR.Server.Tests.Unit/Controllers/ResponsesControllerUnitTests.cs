@@ -22,24 +22,24 @@ using Xunit;
 
 namespace IR.Server.Tests.Unit.Controllers
 {
-	public class ResponseControllerUnitTests
+	public class ResponsesControllerUnitTests
 	{
-		private ResponseController ControllerUnderTest { get; }
+		private ResponsesController ControllerUnderTest { get; }
 
 		private Mock<IResponseService> ResponseServiceMock { get; }
 
-		private Mock<ILogger<ResponseController>> LoggerMock { get; }
+		private Mock<ILogger<ResponsesController>> LoggerMock { get; }
 
-		public ResponseControllerUnitTests()
+		public ResponsesControllerUnitTests()
 		{
-			LoggerMock = new Mock<ILogger<ResponseController>>();
+			LoggerMock = new Mock<ILogger<ResponsesController>>();
 
 			ResponseServiceMock = new Mock<IResponseService>();
 
 			ControllerUnderTest = new(ResponseServiceMock.Object, LoggerMock.Object);
 		}
 
-		public class GetResponsesAsync : ResponseControllerUnitTests
+		public class GetResponsesAsync : ResponsesControllerUnitTests
 		{
 			[Fact(DisplayName = "GetResponsesAsync Returns All Responses")]
 			public async Task GetResponsesAsync_Should_Return_All_Responses_TestAsync()
@@ -106,7 +106,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class GetResponseByIdAsync : ResponseControllerUnitTests
+		public class GetResponseByIdAsync : ResponsesControllerUnitTests
 		{
 			[Fact()]
 			public async Task GetResponseByIdAsync_With_A_Valid_Id_Should_Return_OkObjectResult_with_a_Response_Test()
@@ -186,14 +186,14 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class CreateResponseAsync : ResponseControllerUnitTests
+		public class CreateResponseAsync : ResponsesControllerUnitTests
 		{
 			[Fact()]
 			public async Task CreateResponseAsync_Should_Return_CreatedAtActionResult_With_The_created_Response_Test()
 			{
 				// Arrange
 
-				var expectedCreatedAtActionName = nameof(ResponseController.GetResponseByIdAsync);
+				var expectedCreatedAtActionName = nameof(ResponsesController.GetResponseByIdAsync);
 				var responseToCreate = new NewResponseDto { ResponseDescription = "Test  1" };
 				var expectedResult = new ResponseDto { Id = 1, ResponseDescription = "Test  1" };
 
@@ -294,7 +294,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class UpdateResponseAsync : ResponseControllerUnitTests
+		public class UpdateResponseAsync : ResponsesControllerUnitTests
 		{
 			[Fact]
 			public async Task UpdateResponseAsync_Should_return_NoContentResult_Test()
@@ -446,7 +446,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class DeleteResponseAsync : ResponseControllerUnitTests
+		public class DeleteResponseAsync : ResponsesControllerUnitTests
 		{
 			[Fact]
 			public async Task DeleteResponseAsync_With_Valid_Id_Should_return_NoContentResult_on_successful_delete_Test()

@@ -18,24 +18,24 @@ using Xunit;
 
 namespace IR.Server.Tests.Unit.Controllers
 {
-	public class CommentControllerUnitTests
+	public class CommentsControllerUnitTests
 	{
-		private CommentController ControllerUnderTest { get; }
+		private CommentsController ControllerUnderTest { get; }
 
 		private Mock<ICommentService> CommentServiceMock { get; }
 
-		private Mock<ILogger<CommentController>> LoggerMock { get; }
+		private Mock<ILogger<CommentsController>> LoggerMock { get; }
 
-		public CommentControllerUnitTests()
+		public CommentsControllerUnitTests()
 		{
-			LoggerMock = new Mock<ILogger<CommentController>>();
+			LoggerMock = new Mock<ILogger<CommentsController>>();
 
 			CommentServiceMock = new Mock<ICommentService>();
 
 			ControllerUnderTest = new(CommentServiceMock.Object, LoggerMock.Object);
 		}
 
-		public class GetCommentsAsync : CommentControllerUnitTests
+		public class GetCommentsAsync : CommentsControllerUnitTests
 		{
 			[Fact(DisplayName = "GetCommentsAsync Returns All Comments")]
 			public async Task GetCommentsAsync_Should_Return_All_Comments_TestAsync()
@@ -102,7 +102,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class GetCommentByIdAsync : CommentControllerUnitTests
+		public class GetCommentByIdAsync : CommentsControllerUnitTests
 		{
 			[Fact()]
 			public async Task GetCommentByIdAsync_With_A_Valid_Id_Should_Return_OkObjectResult_with_a_Comment_Test()
@@ -182,14 +182,14 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class CreateCommentAsync : CommentControllerUnitTests
+		public class CreateCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact()]
 			public async Task CreateCommentAsync_Should_Return_CreatedAtActionResult_With_The_created_Comment_Test()
 			{
 				// Arrange
 
-				var expectedCreatedAtActionName = nameof(CommentController.GetCommentByIdAsync);
+				var expectedCreatedAtActionName = nameof(CommentsController.GetCommentByIdAsync);
 				var commentToCreate = new NewCommentDto { CommentDescription = "Test  1" };
 				var expectedResult = new CommentDto { Id = 1, CommentDescription = "Test  1" };
 
@@ -290,7 +290,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class UpdateCommentAsync : CommentControllerUnitTests
+		public class UpdateCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact]
 			public async Task UpdateCommentAsync_Should_return_NoContentResult_Test()
@@ -414,7 +414,7 @@ namespace IR.Server.Tests.Unit.Controllers
 			}
 		}
 
-		public class DeleteCommentAsync : CommentControllerUnitTests
+		public class DeleteCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact]
 			public async Task DeleteCommentAsync_With_Valid_Id_Should_return_NoContentResult_on_successful_delete_Test()

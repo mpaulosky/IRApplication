@@ -12,46 +12,46 @@ using System.Linq;
 namespace IR.Server.Tests.Integration
 {
 	public class CustomWebApplicationFactory<TStartup>
-     : WebApplicationFactory<TStartup> where TStartup : class
-  {
-    protected override void ConfigureWebHost(IWebHostBuilder builder)
-    {
-      builder.ConfigureServices(services =>
-      {
-        var descriptor = services.SingleOrDefault(
-            d => d.ServiceType ==
-                typeof(DbContextOptions<DataContext>));
+		 : WebApplicationFactory<TStartup> where TStartup : class
+	{
+		protected override void ConfigureWebHost(IWebHostBuilder builder)
+		{
+			builder.ConfigureServices(services =>
+			{
+				var descriptor = services.SingleOrDefault(
+						d => d.ServiceType ==
+								typeof(DbContextOptions<DataContext>));
 
-        services.Remove(descriptor);
+				services.Remove(descriptor);
 
-        services.AddDbContext<DataContext>(options =>
-        {
-          options.UseInMemoryDatabase("InMemoryDbForTesting");
-        });
+				services.AddDbContext<DataContext>(options =>
+				{
+					options.UseInMemoryDatabase("InMemoryDbForTesting");
+				});
 
-        var sp = services.BuildServiceProvider();
+				var sp = services.BuildServiceProvider();
 
-        using (var scope = sp.CreateScope())
-        {
-          var scopedServices = scope.ServiceProvider;
-          var db = scopedServices.GetRequiredService<DataContext>();
-          var logger = scopedServices
-              .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
+				using (var scope = sp.CreateScope())
+				{
+					var scopedServices = scope.ServiceProvider;
+					var db = scopedServices.GetRequiredService<DataContext>();
+					var logger = scopedServices
+							.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
-          db.Database.EnsureDeleted(); 
-          db.Database.EnsureCreated();
+					db.Database.EnsureDeleted();
+					db.Database.EnsureCreated();
 
-          try
-          {
-            Utilities.InitializeDbForTests(db);
-          }
-          catch (Exception ex)
-          {
-            logger.LogError(ex, "An error occurred seeding the " +
-                "database with test messages. Error: {Message}", ex.Message);
-          }
-        }
-      });
-    }
+					try
+					{
+						Utilities.InitializeDbForTests(db);
+					}
+					catch (Exception ex)
+					{
+						logger.LogError(ex, "An error occurred seeding the " +
+								"database with test messages. Error: {Message}", ex.Message);
+					}
+				}
+			});
+		}
 	}
 }

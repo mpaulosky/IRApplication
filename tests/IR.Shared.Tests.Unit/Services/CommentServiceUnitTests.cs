@@ -89,7 +89,7 @@ namespace IR.Shared.Tests.Unit.Services
 			public async Task GetAllCommentsAsync_Should_Return_All_Comments_Test()
 			{
 				// Arrange
-				var issuesToReturn = Comments.AsEnumerable();
+				var issuesToReturn = Comments.AsQueryable();
 
 				RepositoryMock
 					.Setup(x => x.SelectAllAsync<Comment>())

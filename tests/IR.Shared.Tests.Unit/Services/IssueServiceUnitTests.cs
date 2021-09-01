@@ -89,7 +89,7 @@ namespace IR.Shared.Tests.Unit.Services
 			public async Task GetAllIssuesAsync_Should_Return_All_Issues_Test()
 			{
 				// Arrange
-				var issuesToReturn = Issues.AsEnumerable();
+				var issuesToReturn = Issues.AsQueryable();
 
 				RepositoryMock
 					.Setup(x => x.SelectAllAsync<Issue>())

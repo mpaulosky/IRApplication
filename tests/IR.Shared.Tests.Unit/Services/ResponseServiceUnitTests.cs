@@ -18,7 +18,7 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Shared.Unit.Tests.Services
+namespace IR.Shared.Tests.Unit.Services
 {
 	public class ResponseServiceUnitTests
 	{
@@ -89,7 +89,7 @@ namespace IR.Shared.Unit.Tests.Services
 			public async Task GetAllResponsesAsync_Should_Return_All_Responses_Test()
 			{
 				// Arrange
-				var issuesToReturn = Responses.AsEnumerable();
+				var issuesToReturn = Responses.AsQueryable();
 
 				RepositoryMock
 					.Setup(x => x.SelectAllAsync<Response>())

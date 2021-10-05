@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using AutoMapper;
+﻿using AutoMapper;
 
 using IR.Shared.Dtos;
 using IR.Shared.Infrastructure;
@@ -10,6 +6,11 @@ using IR.Shared.Interfaces;
 using IR.Shared.Models;
 
 using Microsoft.Extensions.Logging;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IR.Shared.Services
 {
@@ -39,7 +40,12 @@ namespace IR.Shared.Services
 		public async Task<IEnumerable<CommentDto>> GetCommentsAsync()
 		{
 			var results = await _repository.SelectAllAsync<Comment>();
-			var items = _mapper.Map<IEnumerable<CommentDto>>(results);
+
+			var orderByResult = from s in results
+													orderby s.Id
+													select s;
+
+			var items = _mapper.Map<IEnumerable<CommentDto>>(orderByResult.ToList<Comment>());
 			return items;
 		}
 

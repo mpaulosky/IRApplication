@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace IR.Shared.Repositories
@@ -28,9 +28,9 @@ namespace IR.Shared.Repositories
 			await _dbContext.SaveChangesAsync();
 		}
 
-		public async Task<IEnumerable<T>> SelectAllAsync<T>() where T : class
+		public async Task<IQueryable<T>> SelectAllAsync<T>() where T : class
 		{
-			return await _dbContext.Set<T>().ToListAsync();
+			return _dbContext.Set<T>().AsNoTracking().AsQueryable();
 		}
 
 		public async Task<T> SelectByIdAsync<T>(long id) where T : class

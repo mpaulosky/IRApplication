@@ -16,26 +16,26 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Server.Unit.Tests.Controllers
+namespace IR.Server.Tests.Unit.Controllers
 {
-	public class CommentControllerUnitTests
+	public class CommentsControllerUnitTests
 	{
-		private CommentController ControllerUnderTest { get; }
+		private CommentsController ControllerUnderTest { get; }
 
 		private Mock<ICommentService> CommentServiceMock { get; }
 
-		private Mock<ILogger<CommentController>> LoggerMock { get; }
+		private Mock<ILogger<CommentsController>> LoggerMock { get; }
 
-		public CommentControllerUnitTests()
+		public CommentsControllerUnitTests()
 		{
-			LoggerMock = new Mock<ILogger<CommentController>>();
+			LoggerMock = new Mock<ILogger<CommentsController>>();
 
 			CommentServiceMock = new Mock<ICommentService>();
 
 			ControllerUnderTest = new(CommentServiceMock.Object, LoggerMock.Object);
 		}
 
-		public class GetCommentsAsync : CommentControllerUnitTests
+		public class GetCommentsAsync : CommentsControllerUnitTests
 		{
 			[Fact(DisplayName = "GetCommentsAsync Returns All Comments")]
 			public async Task GetCommentsAsync_Should_Return_All_Comments_TestAsync()
@@ -102,7 +102,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class GetCommentByIdAsync : CommentControllerUnitTests
+		public class GetCommentByIdAsync : CommentsControllerUnitTests
 		{
 			[Fact()]
 			public async Task GetCommentByIdAsync_With_A_Valid_Id_Should_Return_OkObjectResult_with_a_Comment_Test()
@@ -182,14 +182,14 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class CreateCommentAsync : CommentControllerUnitTests
+		public class CreateCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact()]
 			public async Task CreateCommentAsync_Should_Return_CreatedAtActionResult_With_The_created_Comment_Test()
 			{
 				// Arrange
 
-				var expectedCreatedAtActionName = nameof(CommentController.GetCommentByIdAsync);
+				var expectedCreatedAtActionName = nameof(CommentsController.GetCommentByIdAsync);
 				var commentToCreate = new NewCommentDto { CommentDescription = "Test  1" };
 				var expectedResult = new CommentDto { Id = 1, CommentDescription = "Test  1" };
 
@@ -290,7 +290,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class UpdateCommentAsync : CommentControllerUnitTests
+		public class UpdateCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact]
 			public async Task UpdateCommentAsync_Should_return_NoContentResult_Test()
@@ -359,7 +359,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			[InlineData("test", null, "test", "Invalid comment object sent from client", "Commenter Id Is Required", "CommenterId")]
 			[InlineData("test", "test", "", "Invalid comment object sent from client", "Commenter Name Is Required", "CommenterName")]
 			[InlineData("test", "test", null, "Invalid comment object sent from client", "Commenter Name Is Required", "CommenterName")]
-			public async Task CreateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync(string commentText, string commenterId, string commenterName, string expectedLog, string expectedValidationError, string expectedValidationField)
+			public async Task UpdateCommentAsync_With_Invalid_Data_Should_Return_Model_Errors_TestAsync(string commentText, string commenterId, string commenterName, string expectedLog, string expectedValidationError, string expectedValidationField)
 			{
 				// Arrange
 
@@ -383,34 +383,6 @@ namespace IR.Server.Unit.Tests.Controllers
 				errors.Count.Should().Be(1);
 				errors[0].Key.Should().Contain(expectedValidationField);
 				errors[0].Value.As<string[]>()[0].Should().BeEquivalentTo(expectedValidationError);
-			}
-
-			[Fact()]
-			public async Task CreateCommentAsync_With_An_Exception_Should_Return_StatusCode_500_Test()
-			{
-				// Arrange
-
-				var commentToCreate = new NewCommentDto { CommentDescription = "Test  1" };
-				const string expectedLog = "Something went wrong inside CreateCommentAsync action: Some Error";
-				const string expectedValue = "Internal server error";
-
-				CommentServiceMock
-					.Setup(x => x.CreateCommentAsync(It.IsAny<NewCommentDto>()))
-					.ThrowsAsync(new Exception("Some Error"));
-
-				// Act
-
-				var result = await ControllerUnderTest.CreateCommentAsync(commentToCreate);
-
-				// Assert
-
-				result.Should().BeOfType<ObjectResult>();
-				LoggerMock.Invocations.Count.Should().Be(1);
-				LoggerMock.Invocations[0].Arguments[2].ToString().Should().Contain(expectedLog);
-
-				var content = (ObjectResult)result;
-				content.StatusCode.Should().Be(500);
-				content.Value.Should().Be(expectedValue);
 			}
 
 			[Fact()]
@@ -442,7 +414,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class DeleteCommentAsync : CommentControllerUnitTests
+		public class DeleteCommentAsync : CommentsControllerUnitTests
 		{
 			[Fact]
 			public async Task DeleteCommentAsync_With_Valid_Id_Should_return_NoContentResult_on_successful_delete_Test()

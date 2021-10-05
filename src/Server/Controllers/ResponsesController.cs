@@ -21,10 +21,10 @@ namespace IR.Server.Controllers
 	[ApiController]
 	[Produces(MediaTypeNames.Application.Json)]
 	[Consumes(MediaTypeNames.Application.Json)]
-	public class ResponseController : ControllerBase
+	public class ResponsesController : ControllerBase
 	{
 		private readonly IResponseService _responseService;
-		private readonly ILogger<ResponseController> _logger;
+		private readonly ILogger<ResponsesController> _logger;
 
 		/// <summary>
 		/// ResponseController Constructor
@@ -32,7 +32,7 @@ namespace IR.Server.Controllers
 		/// <param name="responseService">IResponseService</param>
 		/// <param name="logger">ILogger</param>
 		/// <exception cref="ArgumentNullException">ArgumentNullException</exception>
-		public ResponseController(IResponseService responseService, ILogger<ResponseController> logger)
+		public ResponsesController(IResponseService responseService, ILogger<ResponsesController> logger)
 		{
 			_responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
 			_logger = logger;
@@ -171,7 +171,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="response">ResponseForDeleteDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpDelete("/responses", Name = nameof(DeleteResponseAsync))]
+		[HttpPut("/responses", Name = nameof(DeleteResponseAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> DeleteResponseAsync([FromBody] ResponseForDeleteDto response)

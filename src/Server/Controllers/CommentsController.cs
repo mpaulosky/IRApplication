@@ -21,10 +21,10 @@ namespace IR.Server.Controllers
 	[ApiController]
 	[Produces(MediaTypeNames.Application.Json)]
 	[Consumes(MediaTypeNames.Application.Json)]
-	public class CommentController : ControllerBase
+	public class CommentsController : ControllerBase
 	{
 		private readonly ICommentService _commentService;
-		private readonly ILogger<CommentController> _logger;
+		private readonly ILogger<CommentsController> _logger;
 
 		/// <summary>
 		/// CommentController Constructor
@@ -32,7 +32,7 @@ namespace IR.Server.Controllers
 		/// <param name="commentService">ICommentService</param>
 		/// <param name="logger">ILogger</param>
 		/// <exception cref="ArgumentNullException">ArgumentNullException</exception>
-		public CommentController(ICommentService commentService, ILogger<CommentController> logger)
+		public CommentsController(ICommentService commentService, ILogger<CommentsController> logger)
 		{
 			_commentService = commentService ?? throw new ArgumentNullException(nameof(commentService));
 			_logger = logger;
@@ -145,6 +145,12 @@ namespace IR.Server.Controllers
 					return BadRequest("Comment object sent from client is null.");
 				}
 
+				if (id != comment.Id)
+				{
+					_logger.LogError("Invalid comment object sent from client");
+					return BadRequest("Invalid comment object sent from client");
+				}
+
 				if (!ModelState.IsValid)
 				{
 					_logger.LogError("Invalid comment object sent from client");
@@ -171,7 +177,7 @@ namespace IR.Server.Controllers
 		/// </summary>
 		/// <param name="comment">CommentForDeleteDto</param>
 		/// <returns>IActionResult</returns>
-		[HttpDelete("/comments", Name = nameof(DeleteCommentAsync))]
+		[HttpPut("/comments", Name = nameof(DeleteCommentAsync))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public async Task<IActionResult> DeleteCommentAsync([FromBody] CommentForDeleteDto comment)

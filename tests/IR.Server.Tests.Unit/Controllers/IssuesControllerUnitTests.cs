@@ -20,26 +20,26 @@ using TestHelpers;
 
 using Xunit;
 
-namespace IR.Server.Unit.Tests.Controllers
+namespace IR.Server.Tests.Unit.Controllers
 {
-	public class IssueControllerUnitTests
+	public class IssuesControllerUnitTests
 	{
-		private IssueController ControllerUnderTest { get; }
+		private IssuesController ControllerUnderTest { get; }
 
 		private Mock<IIssueService> IssueServiceMock { get; }
 
-		private Mock<ILogger<IssueController>> LoggerMock { get; }
+		private Mock<ILogger<IssuesController>> LoggerMock { get; }
 
-		public IssueControllerUnitTests()
+		public IssuesControllerUnitTests()
 		{
-			LoggerMock = new Mock<ILogger<IssueController>>();
+			LoggerMock = new Mock<ILogger<IssuesController>>();
 
 			IssueServiceMock = new Mock<IIssueService>();
 
-			ControllerUnderTest = new IssueController(IssueServiceMock.Object, LoggerMock.Object);
+			ControllerUnderTest = new IssuesController(IssueServiceMock.Object, LoggerMock.Object);
 		}
 
-		public class GetIssuesAsync : IssueControllerUnitTests
+		public class GetIssuesAsync : IssuesControllerUnitTests
 		{
 			[Fact(DisplayName = "GetIssuesAsync Returns All Issues")]
 			public async Task GetIssuesAsync_Should_Return_All_Issues_TestAsync()
@@ -106,7 +106,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class GetIssueByIdAsync : IssueControllerUnitTests
+		public class GetIssueByIdAsync : IssuesControllerUnitTests
 		{
 			[Fact()]
 			public async Task GetIssueByIdAsync_With_A_Valid_Id_Should_Return_OkObjectResult_with_a_Issue_Test()
@@ -186,14 +186,14 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class CreateIssueAsync : IssueControllerUnitTests
+		public class CreateIssueAsync : IssuesControllerUnitTests
 		{
 			[Fact()]
 			public async Task CreateIssueAsync_Should_Return_CreatedAtActionResult_With_The_created_Issue_Test()
 			{
 				// Arrange
 
-				var expectedCreatedAtActionName = nameof(IssueController.GetIssueByIdAsync);
+				var expectedCreatedAtActionName = nameof(IssuesController.GetIssueByIdAsync);
 				var issueToCreate = new NewIssueDto { IssueDescription = "Test  1" };
 				var expectedResult = new IssueDto { Id = 1, IssueDescription = "Test  1" };
 
@@ -294,7 +294,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class UpdateIssueAsync : IssueControllerUnitTests
+		public class UpdateIssueAsync : IssuesControllerUnitTests
 		{
 			[Fact]
 			public async Task UpdateIssueAsync_Should_return_NoContentResult_Test()
@@ -446,7 +446,7 @@ namespace IR.Server.Unit.Tests.Controllers
 			}
 		}
 
-		public class DeleteIssueAsync : IssueControllerUnitTests
+		public class DeleteIssueAsync : IssuesControllerUnitTests
 		{
 			[Fact]
 			public async Task DeleteIssueAsync_With_Valid_Id_Should_return_NoContentResult_on_successful_delete_Test()
